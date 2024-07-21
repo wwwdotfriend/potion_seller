@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://cu1bjwcl2dm4m"]
+
+[ext_resource type="Script" path="res://scripts/inv_manager.gd" id="1_pv44a"]
+[ext_resource type="Resource" uid="uid://bb56ooxp5oiqi" path="res://resources/inventory.tres" id="2_1tr4m"]
+[ext_resource type="PackedScene" uid="uid://d20urnxtobqsg" path="res://scenes/inv_slot.tscn" id="3_s7dff"]
+
+[node name="inventory" type="Control"]
+custom_minimum_size = Vector2(192, 128)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 192.0
+offset_bottom = 128.0
+scale = Vector2(1.75, 1.75)
+script = ExtResource("1_pv44a")
+inv = ExtResource("2_1tr4m")
+
+[node name="InvSlot" parent="." instance=ExtResource("3_s7dff")]
+layout_mode = 0
+
+[node name="InvSlot2" parent="." instance=ExtResource("3_s7dff")]
+layout_mode = 0
+offset_left = 64.0
+offset_right = 128.0
+
+[node name="InvSlot3" parent="." instance=ExtResource("3_s7dff")]
+layout_mode = 0
+offset_left = 128.0
+offset_right = 192.0
+
+[node name="InvSlot4" parent="." instance=ExtResource("3_s7dff")]
+layout_mode = 0
+offset_left = 33.1429
+offset_top = 64.0
+offset_right = 97.1429
+offset_bottom = 128.0
+
+[node name="InvSlot5" parent="." instance=ExtResource("3_s7dff")]
+layout_mode = 0
+offset_left = 97.1429
+offset_top = 64.0
+offset_right = 161.143
+offset_bottom = 128.0

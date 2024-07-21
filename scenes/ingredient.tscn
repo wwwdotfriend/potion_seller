@@ -31,7 +31,6 @@ grow_vertical = 2
 action_mode = 0
 
 [node name="RigidBody2D" type="RigidBody2D" parent="Sprite2D"]
-scale = Vector2(1, 1)
 physics_material_override = SubResource("PhysicsMaterial_e0jpe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/RigidBody2D"]

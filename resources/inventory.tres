@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Inv" load_steps=8 format=3 uid="uid://bb56ooxp5oiqi"]
+
+[ext_resource type="Script" path="res://scripts/ingredient_item.gd" id="1_icw3u"]
+[ext_resource type="Resource" uid="uid://cuk8tdhvrs2w1" path="res://resources/redshroom.tres" id="2_1vuik"]
+[ext_resource type="Resource" uid="uid://cwwptosh6hgt4" path="res://resources/blueshroom.tres" id="3_8wfsy"]
+[ext_resource type="Resource" uid="uid://cfh7vygvg0qmd" path="res://resources/greenshroom.tres" id="4_27p4f"]
+[ext_resource type="Resource" uid="uid://bj6wrucdetydc" path="res://resources/blackshroom.tres" id="5_hp7l6"]
+[ext_resource type="Resource" uid="uid://mlisbwtm4860" path="res://resources/whiteshroom.tres" id="6_16hmm"]
+[ext_resource type="Script" path="res://scripts/inv_array.gd" id="7_wmjje"]
+
+[resource]
+script = ExtResource("7_wmjje")
+items = Array[ExtResource("1_icw3u")]([ExtResource("2_1vuik"), ExtResource("3_8wfsy"), ExtResource("4_27p4f"), ExtResource("5_hp7l6"), ExtResource("6_16hmm")])

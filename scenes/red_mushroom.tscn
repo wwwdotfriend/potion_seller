@@ -16,7 +16,7 @@ script = ExtResource("1_t4ln0")
 scale = Vector2(6, 6)
 texture = ExtResource("1_xgokm")
 region_enabled = true
-region_rect = Rect2(64, 16, 16, 16)
+region_rect = Rect2(48, 64, 16, 16)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 visible = false

@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://d20urnxtobqsg"]
+
+[ext_resource type="Script" path="res://scripts/inv_slot.gd" id="1_rbovk"]
+
+[node name="InvSlot" type="Panel" groups=["inv_slot"]]
+self_modulate = Color(1, 1, 1, 0)
+offset_right = 64.0
+offset_bottom = 64.0
+script = ExtResource("1_rbovk")
+
+[node name="item_display" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+centered = false
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
