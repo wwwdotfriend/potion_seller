@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxdffijg6c1kq"]
+
+[ext_resource type="Script" path="res://scripts/potion_ingredient.gd" id="1_1vgs6"]
+[ext_resource type="Texture2D" uid="uid://slwtpck6h3no" path="res://assets/art/sprites.png" id="2_fu0gq"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mtn8a"]
+rough = true
+bounce = 0.25
+
+[node name="GreenShroom" type="RigidBody2D" groups=["pickable"]]
+input_pickable = true
+physics_material_override = SubResource("PhysicsMaterial_mtn8a")
+script = ExtResource("1_1vgs6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(6, 6)
+texture = ExtResource("2_fu0gq")
+region_enabled = true
+region_rect = Rect2(80, 0, 16, 16)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(6, 6)
+polygon = PackedVector2Array(-2, -7, -4, -7, -4, -6, -5, -6, -5, -5, -6, -5, -6, -4, -7, -4, -7, -2, -6, -2, -6, -1, -4, -1, -4, 0, -2, 0, -2, 3, -3, 3, -3, 5, -4, 5, -4, 7, -3, 7, -3, 8, 0, 8, 0, 7, 1, 7, 1, 4, 2, 4, 2, 0, 3, 0, 3, -1, 6, -1, 6, -2, 7, -2, 7, -4, 6, -4, 6, -5, 5, -5, 5, -6, 4, -6, 4, -7, 2, -7, 2, -8, -2, -8)
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://7ee55h58ulca"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_tko5n"]
-[ext_resource type="PackedScene" uid="uid://r1lo4vw467f2" path="res://scenes/red_mushroom.tscn" id="2_67fv4"]
+[ext_resource type="PackedScene" uid="uid://r1lo4vw467f2" path="res://scenes/ingredients/red_shroom.tscn" id="2_67fv4"]
 [ext_resource type="PackedScene" uid="uid://cl4vsiund7gws" path="res://scenes/hud.tscn" id="2_455rb"]
 
 [node name="Main" type="Node2D"]
@@ -11,4 +11,4 @@ script = ExtResource("1_tko5n")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="PotionIngredient" parent="." instance=ExtResource("2_67fv4")]
+[node name="RedShroom" parent="." instance=ExtResource("2_67fv4")]

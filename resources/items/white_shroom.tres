@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="IngredientItem" load_steps=4 format=3 uid="uid://mlisbwtm4860"]
+
+[ext_resource type="Script" path="res://scripts/ingredient_item.gd" id="1_1jc5q"]
+[ext_resource type="Texture2D" uid="uid://slwtpck6h3no" path="res://assets/art/sprites.png" id="2_y58rk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rhn8"]
+atlas = ExtResource("2_y58rk")
+region = Rect2(64, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_1jc5q")
+name = "White Shroom"
+texture = SubResource("AtlasTexture_2rhn8")
+scene_path = "res://scenes/ingredients/white_shroom.tscn"
