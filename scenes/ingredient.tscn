@@ -1,7 +1,39 @@
-[gd_scene load_steps=5 format=3 uid="uid://bkvpht2tx25th"]
+[gd_scene load_steps=5 format=3 uid="uid://yjhet3dnk7nn"]
 
-[ext_resource type="Script" path="res://scripts/ingredient.gd" id="1_0gqrk"]
 [ext_resource type="Texture2D" uid="uid://slwtpck6h3no" path="res://assets/art/sprites.png" id="1_8afu3"]
+
+[sub_resource type="GDScript" id="GDScript_3aag5"]
+script/source = "extends Node2D
+
+@onready var sprite = $Sprite2D
+
+signal mouse_released
+signal picked_up_changed(picked)
+
+var picked_up: bool = false :
+	set(b):
+		if not b:
+			position = Vector2.ZERO
+		picked_up = b
+		picked_up_changed.emit()
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+	
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if picked_up:
+		global_position = get_global_mouse_position()
+	
+	if Input.is_action_just_released(\"M1\"):
+		mouse_released.emit()
+
+func _on_mouse_region_pressed() -> void:
+	picked_up = true
+	await mouse_released
+	picked_up = false
+"
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e0jpe"]
 
@@ -9,13 +41,13 @@
 size = Vector2(18.6667, 21.3333)
 
 [node name="Ingredient" type="Node2D"]
-script = ExtResource("1_0gqrk")
+script = SubResource("GDScript_3aag5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(5, 5)
 texture = ExtResource("1_8afu3")
 region_enabled = true
-region_rect = Rect2(48, 64, 16, 16)
+region_rect = Rect2(64, 16, 16, 16)
 
 [node name="MouseRegion" type="Button" parent="Sprite2D"]
 self_modulate = Color(1, 1, 1, 0)
