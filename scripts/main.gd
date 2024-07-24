@@ -26,10 +26,10 @@ func _on_pickable_clicked(object):
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if held_object and !event.pressed:
-			held_object.drop(Input.get_last_mouse_velocity())
+			held_object.drop()
 			held_object = null
 	elif !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and held_object:
-		held_object.drop(Input.get_last_mouse_velocity())
+		held_object.drop()
 		held_object = null
 			
 func _check_for_drop():
