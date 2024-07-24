@@ -3,13 +3,13 @@
 [ext_resource type="Script" path="res://scripts/potion_ingredient.gd" id="1_t4ln0"]
 [ext_resource type="Texture2D" uid="uid://slwtpck6h3no" path="res://assets/art/sprites.png" id="1_xgokm"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mtn8a"]
-rough = true
-bounce = 0.25
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_how38"]
 
-[node name="RedShroom" type="RigidBody2D" groups=["pickable"]]
+[node name="RedShroom" type="RigidBody2D" groups=["ingredient", "pickable"]]
 input_pickable = true
-physics_material_override = SubResource("PhysicsMaterial_mtn8a")
+mass = 5.0
+physics_material_override = SubResource("PhysicsMaterial_how38")
+can_sleep = false
 script = ExtResource("1_t4ln0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -19,6 +19,7 @@ region_enabled = true
 region_rect = Rect2(48, 64, 16, 16)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
 scale = Vector2(6, 6)
 polygon = PackedVector2Array(-2, -7, -3, -7, -3, -6, -4, -6, -4, -5, -5, -5, -5, -3, -6, -3, -6, -1, -7, -1, -7, 1, -6, 1, -6, 2, -5, 2, -5, 4, -4, 4, -4, 3, -3, 3, -3, 4, -2, 4, -2, 5, -3, 5, -3, 7, -2, 7, -2, 8, 1, 8, 1, 7, 2, 7, 2, 4, 3, 4, 3, 5, 4, 5, 4, 3, 5, 3, 5, 4, 6, 4, 6, 2, 7, 2, 7, -1, 6, -1, 6, -3, 5, -3, 5, -5, 4, -5, 4, -6, 3, -6, 3, -7, 2, -7, 2, -8, -2, -8)
 

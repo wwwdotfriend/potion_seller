@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4uqiq2mtyhk2"]
+
+[ext_resource type="Script" path="res://scenes/tool.gd" id="1_c2u4r"]
+[ext_resource type="Texture2D" uid="uid://dk20dmykkwws8" path="res://assets/art/pestle.png" id="1_fjdek"]
+
+[node name="tool" type="CharacterBody2D" groups=["pickable"]]
+input_pickable = true
+script = ExtResource("1_c2u4r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_fjdek")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-11, -64, -11, -40, -10, -40, -10, -24, -9, -24, -9, -16, -8, -16, -8, 64, 8, 64, 8, -16, 9, -16, 9, -24, 10, -24, 10, -40, 11, -40, 11, -64)
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
