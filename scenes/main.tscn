@@ -24,7 +24,6 @@ script = ExtResource("1_tko5n")
 [node name="hud" parent="." instance=ExtResource("2_455rb")]
 
 [node name="PanelArea" type="Area2D" parent="hud"]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hud/PanelArea"]
 position = Vector2(434, 0)
@@ -51,16 +50,18 @@ scale = Vector2(1.25, 1.25)
 position = Vector2(-16, 191)
 
 [node name="MortarAbove" type="Area2D" parent="Mortar"]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mortar/MortarAbove"]
 position = Vector2(64, -276)
 shape = SubResource("RectangleShape2D_hofij")
 
-[node name="MortarBelow" type="Area2D" parent="Mortar"]
+[node name="MortarInside" type="Area2D" parent="Mortar"]
+visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Mortar/MortarBelow"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mortar/MortarInside"]
 position = Vector2(64, 56)
 shape = SubResource("RectangleShape2D_16ii4")
 
-[connection signal="body_entered" from="Mortar/MortarAbove" to="tool" method="_on_mortar_above_body_entered"]
-[connection signal="body_exited" from="Mortar/MortarAbove" to="tool" method="_on_mortar_above_body_exited"]
+[connection signal="body_entered" from="hud/PanelArea" to="." method="_on_panel_area_body_entered"]
+[connection signal="body_entered" from="Mortar/MortarAbove" to="." method="_on_mortar_above_body_entered"]

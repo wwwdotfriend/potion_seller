@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dk20dmykkwws8"
-path="res://.godot/imported/Pestle.png-db7cbf954c648fecca925a2e47737e07.ctex"
+uid="uid://biqpkna0ilbg4"
+path="res://.godot/imported/mortar.png-ee6693c793cfbf8fad426b4ef49f8480.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/Pestle.png"
-dest_files=["res://.godot/imported/Pestle.png-db7cbf954c648fecca925a2e47737e07.ctex"]
+source_file="res://assets/art/mortar.png"
+dest_files=["res://.godot/imported/mortar.png-ee6693c793cfbf8fad426b4ef49f8480.ctex"]
 
 [params]
 

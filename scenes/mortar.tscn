@@ -1,29 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://bitap1diibfci"]
+[gd_scene load_steps=2 format=3 uid="uid://bitap1diibfci"]
 
-[ext_resource type="Texture2D" uid="uid://c2do73a1o2b61" path="res://assets/art/mortar_placeholder.png" id="1_ni1ao"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ngob6"]
-size = Vector2(16, 128)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_j7xsg"]
-size = Vector2(128, 16)
+[ext_resource type="Texture2D" uid="uid://biqpkna0ilbg4" path="res://assets/art/mortar.png" id="1_6qfrj"]
 
 [node name="Mortar" type="StaticBody2D"]
 collision_layer = 3
 collision_mask = 3
 
 [node name="MortarSprite" type="Sprite2D" parent="."]
-texture = ExtResource("1_ni1ao")
+z_index = 1
+scale = Vector2(4, 4)
+texture = ExtResource("1_6qfrj")
 centered = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(8, 64)
-shape = SubResource("RectangleShape2D_ngob6")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(120, 64)
-shape = SubResource("RectangleShape2D_ngob6")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
-position = Vector2(64, 120)
-shape = SubResource("RectangleShape2D_j7xsg")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(4, 4)
+polygon = PackedVector2Array(10, 26, 4, 18, 1, 10, 0, 10, 0, 10, 0, 19, 1, 19, 1, 20, 2, 20, 2, 21, 3, 21, 3, 22, 4, 22, 4, 23, 5, 23, 5, 24, 6, 24, 6, 25, 7, 25, 7, 26, 8, 26, 8, 27, 5, 27, 5, 28, 4, 28, 4, 29, 3, 29, 3, 32, 29, 32, 29, 29, 28, 29, 28, 28, 27, 28, 27, 27, 24, 27, 24, 26, 25, 26, 25, 25, 26, 25, 26, 24, 27, 24, 27, 23, 28, 23, 28, 22, 29, 22, 29, 21, 30, 21, 30, 20, 31, 20, 31, 18, 32, 18, 32, 10, 31, 10, 28, 18, 22, 26)

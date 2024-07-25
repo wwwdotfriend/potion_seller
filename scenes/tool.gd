@@ -4,7 +4,7 @@ signal clicked
 
 var held = false
 const GRAVITY = 900
-const FOLLOW_SPEED = 70.0  # Adjust this value to change how quickly it follows the cursor
+const FOLLOW_SPEED = 80.0  # Adjust this value to change how quickly it follows the cursor
 
 var grab_offset = Vector2.ZERO
 
@@ -38,13 +38,3 @@ func pickup():
 func drop():
 	held = false
 	velocity = Vector2.ZERO  # Reset velocity when dropped
-
-
-func _on_mortar_above_body_entered(body: Node2D) -> void:
-	if body.is_in_group("tool"):
-		print("above")
-
-
-func _on_mortar_above_body_exited(body: Node2D) -> void:
-	if body.is_in_group("tool"):
-		print("below")
