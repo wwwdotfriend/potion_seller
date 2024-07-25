@@ -1,14 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://cl4vsiund7gws"]
+[gd_scene load_steps=8 format=3 uid="uid://cl4vsiund7gws"]
 
-[ext_resource type="Texture2D" uid="uid://bh44pfdgnug4v" path="res://assets/art/hud_placeholder2.png" id="1_kg03k"]
 [ext_resource type="PackedScene" uid="uid://cu1bjwcl2dm4m" path="res://scenes/inventory.tscn" id="2_566x2"]
+[ext_resource type="Texture2D" uid="uid://cnn2u8tbq2y0q" path="res://assets/art/hud_placeholder3.png" id="2_f3ou4"]
 [ext_resource type="Script" path="res://scripts/inventory.gd" id="2_w38ve"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_teiyy"]
-size = Vector2(830, 7.5)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_blb3d"]
-size = Vector2(6, 639)
+size = Vector2(14, 646)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jys53"]
+size = Vector2(843, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mcbku"]
+size = Vector2(1218, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q31a3"]
+size = Vector2(646, 13.9993)
 
 [node name="Hud" type="Control"]
 layout_mode = 3
@@ -22,30 +28,42 @@ grow_vertical = 2
 script = ExtResource("2_w38ve")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_kg03k")
+texture = ExtResource("2_f3ou4")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
 collision_layer = 7
 collision_mask = 7
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-193, 322.5)
-shape = SubResource("RectangleShape2D_teiyy")
-
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-193, -309.75)
-shape = SubResource("RectangleShape2D_teiyy")
+position = Vector2(-607.5, 6)
+shape = SubResource("RectangleShape2D_blb3d")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(223, 6)
+shape = SubResource("RectangleShape2D_blb3d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-191.5, -311.5)
+shape = SubResource("RectangleShape2D_jys53")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(219, 6.5)
-shape = SubResource("RectangleShape2D_blb3d")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-605, 7)
-shape = SubResource("RectangleShape2D_blb3d")
+position = Vector2(4, 324)
+shape = SubResource("RectangleShape2D_mcbku")
 
 [node name="Inventory" parent="." instance=ExtResource("2_566x2")]
-offset_left = 250.0
-offset_top = -10.0
-offset_right = 442.0
-offset_bottom = 118.0
+offset_left = 248.0
+offset_top = -132.0
+offset_right = 440.0
+offset_bottom = -4.00002
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+visible = false
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionOneWay" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(223, 6)
+rotation = -1.57079
+shape = SubResource("RectangleShape2D_q31a3")
+one_way_collision = true

@@ -1,13 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bitap1diibfci"]
+[gd_scene load_steps=4 format=3 uid="uid://bitap1diibfci"]
 
 [ext_resource type="Texture2D" uid="uid://c2do73a1o2b61" path="res://assets/art/mortar_placeholder.png" id="1_ni1ao"]
-[ext_resource type="PackedScene" uid="uid://dtx3lh2ksqacy" path="res://scenes/pestle.tscn" id="2_av5r6"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_carg6"]
-size = Vector2(128, 320)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjsbv"]
-size = Vector2(96, 112)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ngob6"]
 size = Vector2(16, 128)
@@ -15,42 +8,22 @@ size = Vector2(16, 128)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j7xsg"]
 size = Vector2(128, 16)
 
-[node name="MortarAndPestle" type="Node2D"]
+[node name="Mortar" type="StaticBody2D"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="MortarSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_ni1ao")
 centered = false
 
-[node name="MortarAbove" type="Area2D" parent="MortarSprite"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MortarSprite/MortarAbove"]
-position = Vector2(64, -160)
-shape = SubResource("RectangleShape2D_carg6")
-
-[node name="MortarBelow" type="Area2D" parent="MortarSprite"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MortarSprite/MortarBelow"]
-position = Vector2(64, 56)
-shape = SubResource("RectangleShape2D_yjsbv")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MortarSprite"]
-visible = false
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MortarSprite/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(8, 64)
 shape = SubResource("RectangleShape2D_ngob6")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="MortarSprite/StaticBody2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(120, 64)
 shape = SubResource("RectangleShape2D_ngob6")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="MortarSprite/StaticBody2D"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
 position = Vector2(64, 120)
 shape = SubResource("RectangleShape2D_j7xsg")
-
-[node name="Pestle" parent="." instance=ExtResource("2_av5r6")]
-position = Vector2(37, 22)
-rotation = -0.261799
-mass = 5.0

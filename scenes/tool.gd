@@ -1,25 +1,33 @@
 extends CharacterBody2D
 
-var held = false
-const GRAVITY = 900
-
-var grab_offset = Vector2.ZERO
-
 signal clicked
 
-func _physics_process(delta: float) -> void:
-	var mouse_pos = get_viewport().get_mouse_position()
-	if held:
-		global_transform.origin = get_global_mouse_position() + grab_offset
-	else:
-		velocity.y += GRAVITY * delta
-		move_and_slide()
+var held = false
+const GRAVITY = 900
+const FOLLOW_SPEED = 70.0  # Adjust this value to change how quickly it follows the cursor
+
+var grab_offset = Vector2.ZERO
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
-			print("clicked")
 			clicked.emit(self)
+
+func _physics_process(delta: float) -> void:
+	if held:
+		var target_position = get_global_mouse_position() + grab_offset
+		var direction = (target_position - global_position).normalized()
+		var distance = global_position.distance_to(target_position)
+		
+		velocity = direction * min(FOLLOW_SPEED * distance, FOLLOW_SPEED * 50)
+		
+		var collision = move_and_collide(velocity * delta)
+		if collision:
+			var slide_vector = collision.get_remainder().slide(collision.get_normal())
+			move_and_collide(slide_vector)
+	else:
+		velocity.y += GRAVITY * delta
+		move_and_slide()
 
 func pickup():
 	if held:
@@ -29,3 +37,14 @@ func pickup():
 
 func drop():
 	held = false
+	velocity = Vector2.ZERO  # Reset velocity when dropped
+
+
+func _on_mortar_above_body_entered(body: Node2D) -> void:
+	if body.is_in_group("tool"):
+		print("above")
+
+
+func _on_mortar_above_body_exited(body: Node2D) -> void:
+	if body.is_in_group("tool"):
+		print("below")
