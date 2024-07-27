@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="Inv" load_steps=8 format=3 uid="uid://bb56ooxp5oiqi"]
 
 [ext_resource type="Script" path="res://scripts/ingredient_item.gd" id="1_icw3u"]
-[ext_resource type="Resource" uid="uid://cuk8tdhvrs2w1" path="res://resources/items/red_shroom.tres" id="2_1vuik"]
-[ext_resource type="Resource" uid="uid://cwwptosh6hgt4" path="res://resources/items/blue_shroom.tres" id="3_8wfsy"]
-[ext_resource type="Resource" uid="uid://cfh7vygvg0qmd" path="res://resources/items/green_shroom.tres" id="4_27p4f"]
-[ext_resource type="Resource" uid="uid://bj6wrucdetydc" path="res://resources/items/black_shroom.tres" id="5_hp7l6"]
-[ext_resource type="Resource" uid="uid://mlisbwtm4860" path="res://resources/items/white_shroom.tres" id="6_16hmm"]
+[ext_resource type="Resource" uid="uid://dk2u0kuy808pu" path="res://resources/ingredients/bloodroot.tres" id="2_yt87b"]
+[ext_resource type="Resource" uid="uid://t5brw6fvmaqj" path="res://resources/ingredients/emerald_algae.tres" id="3_6qtwi"]
+[ext_resource type="Resource" uid="uid://r0kraibcygwd" path="res://resources/ingredients/moonberry.tres" id="3_8o2ro"]
+[ext_resource type="Resource" uid="uid://cxkolok5l8khi" path="res://resources/ingredients/suns_grace_crocus.tres" id="5_1co87"]
+[ext_resource type="Resource" uid="uid://dobstet76lmx0" path="res://resources/ingredients/shadowcap_mushroom.tres" id="6_k0l6y"]
 [ext_resource type="Script" path="res://scripts/inv_array.gd" id="7_wmjje"]
 
 [resource]
 script = ExtResource("7_wmjje")
-items = Array[ExtResource("1_icw3u")]([ExtResource("2_1vuik"), ExtResource("3_8wfsy"), ExtResource("4_27p4f"), ExtResource("5_hp7l6"), ExtResource("6_16hmm")])
+items = Array[ExtResource("1_icw3u")]([ExtResource("2_yt87b"), ExtResource("3_6qtwi"), ExtResource("3_8o2ro"), ExtResource("5_1co87"), ExtResource("6_k0l6y")])

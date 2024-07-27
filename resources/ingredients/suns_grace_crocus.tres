@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="IngredientItem" load_steps=3 format=3 uid="uid://cxkolok5l8khi"]
+
+[ext_resource type="Script" path="res://scripts/ingredient_item.gd" id="1_66wro"]
+[ext_resource type="Texture2D" uid="uid://dwui7kp72t81t" path="res://assets/art/ingredients/Suns_Grace_Crocus.png" id="2_1icyh"]
+
+[resource]
+script = ExtResource("1_66wro")
+name = "Sun's Grace Crocus"
+texture = ExtResource("2_1icyh")
+scene_path = "res://scenes/ingredients/shadowcap_mushroom.tscn"

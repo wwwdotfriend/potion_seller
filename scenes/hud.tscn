@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cl4vsiund7gws"]
 
 [ext_resource type="PackedScene" uid="uid://cu1bjwcl2dm4m" path="res://scenes/inventory.tscn" id="2_566x2"]
-[ext_resource type="Texture2D" uid="uid://cnn2u8tbq2y0q" path="res://assets/art/hud_placeholder3.png" id="2_f3ou4"]
+[ext_resource type="Texture2D" uid="uid://cnn2u8tbq2y0q" path="res://assets/art/hud1.png" id="2_f3ou4"]
 [ext_resource type="Script" path="res://scripts/inventory.gd" id="2_w38ve"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_blb3d"]

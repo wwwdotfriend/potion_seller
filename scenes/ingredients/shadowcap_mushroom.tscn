@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://vqk0jjkor6nq"]
+
+[ext_resource type="Script" path="res://scripts/potion_ingredient.gd" id="1_imym5"]
+[ext_resource type="Texture2D" uid="uid://cw5oamkip2hfk" path="res://assets/art/ingredients/Shadowcap_Mushroom.png" id="2_lyx5e"]
+
+[node name="shadowcap_mushroom" type="RigidBody2D" groups=["ingredient", "pickable"]]
+input_pickable = true
+script = ExtResource("1_imym5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(6, 6)
+texture = ExtResource("2_lyx5e")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(6, 6)
+polygon = PackedVector2Array(-2, -8, -2, -7, -4, -7, -4, -6, -5, -6, -5, -5, -6, -5, -6, -4, -7, -4, -7, -2, -8, -2, -8, 1, -7, 1, -7, 2, -6, 2, -6, 3, -2, 3, -2, 4, -1, 4, -1, 7, 0, 7, 0, 8, 4, 8, 4, 7, 5, 7, 5, 6, 6, 6, 6, 2, 5, 2, 5, 1, 6, 1, 6, 0, 7, 0, 7, -1, 8, -1, 8, -3, 7, -3, 7, -5, 6, -5, 6, -6, 5, -6, 5, -7, 3, -7, 3, -8)
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

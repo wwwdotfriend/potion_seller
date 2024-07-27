@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="IngredientItem" load_steps=3 format=3 uid="uid://dobstet76lmx0"]
+
+[ext_resource type="Script" path="res://scripts/ingredient_item.gd" id="1_mihxi"]
+[ext_resource type="Texture2D" uid="uid://cw5oamkip2hfk" path="res://assets/art/ingredients/Shadowcap_Mushroom.png" id="2_5rmfl"]
+
+[resource]
+script = ExtResource("1_mihxi")
+name = "Shadowcap Mushroom"
+texture = ExtResource("2_5rmfl")
+scene_path = "res://scenes/ingredients/shadowcap_mushroom.tscn"

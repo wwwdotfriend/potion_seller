@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2do73a1o2b61"
-path="res://.godot/imported/mortar_placeholder.png-5cc6e268a48326a6399f2e47ed6b4116.ctex"
+uid="uid://1b8vh3u83rgn"
+path="res://.godot/imported/Moonberry.png-6db4d296cfc4bd42dc50685cd1cdc590.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/mortar_placeholder.png"
-dest_files=["res://.godot/imported/mortar_placeholder.png-5cc6e268a48326a6399f2e47ed6b4116.ctex"]
+source_file="res://assets/art/ingredients/Moonberry.png"
+dest_files=["res://.godot/imported/Moonberry.png-6db4d296cfc4bd42dc50685cd1cdc590.ctex"]
 
 [params]
 

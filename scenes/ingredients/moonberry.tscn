@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cr6t4bxtv0hdo"]
+
+[ext_resource type="Script" path="res://scripts/potion_ingredient.gd" id="1_rv1cy"]
+[ext_resource type="Texture2D" uid="uid://1b8vh3u83rgn" path="res://assets/art/ingredients/Moonberry.png" id="2_4cj2v"]
+
+[node name="moonberry" type="RigidBody2D" groups=["ingredient", "pickable"]]
+input_pickable = true
+script = ExtResource("1_rv1cy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(6, 6)
+texture = ExtResource("2_4cj2v")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(6, 6)
+polygon = PackedVector2Array(0, -8, 0, -7, -1, -7, -1, -6, -2, -6, -2, -5, -3, -5, -3, -4, -4, -4, -4, -3, -5, -3, -5, -2, -6, -2, -6, 0, -7, 0, -7, 2, -6, 2, -6, 4, -5, 4, -5, 5, -4, 5, -4, 6, -3, 6, -3, 7, -2, 7, -2, 8, 2, 8, 2, 7, 3, 7, 3, 6, 4, 6, 4, 5, 5, 5, 5, 4, 6, 4, 6, 2, 7, 2, 7, 0, 6, 0, 6, -2, 5, -2, 5, -3, 4, -3, 4, -4, 3, -4, 3, -7, 2, -7, 2, -8)
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

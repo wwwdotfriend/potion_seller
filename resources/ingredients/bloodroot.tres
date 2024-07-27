@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="IngredientItem" load_steps=3 format=3 uid="uid://dk2u0kuy808pu"]
+
+[ext_resource type="Script" path="res://scripts/ingredient_item.gd" id="1_pk3j2"]
+[ext_resource type="Texture2D" uid="uid://diqttwmufvbjg" path="res://assets/art/ingredients/Bloodroot.png" id="2_hxrvd"]
+
+[resource]
+script = ExtResource("1_pk3j2")
+name = "Bloodroot"
+texture = ExtResource("2_hxrvd")
+scene_path = "res://scenes/ingredients/bloodroot.tscn"

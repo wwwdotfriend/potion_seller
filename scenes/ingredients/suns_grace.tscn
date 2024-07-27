@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bi4mbel2nfu0x"]
+
+[ext_resource type="Script" path="res://scripts/potion_ingredient.gd" id="1_4qak4"]
+[ext_resource type="Texture2D" uid="uid://dwui7kp72t81t" path="res://assets/art/ingredients/Suns_Grace_Crocus.png" id="2_yxa25"]
+
+[node name="suns_grace" type="RigidBody2D" groups=["ingredient", "pickable"]]
+input_pickable = true
+script = ExtResource("1_4qak4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(6, 6)
+texture = ExtResource("2_yxa25")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(6, 6)
+polygon = PackedVector2Array(-2, -8, -2, -7, -3, -7, -3, -6, -4, -6, -4, -5, -5, -5, -5, -4, -6, -4, -6, -3, -7, -3, -7, 0, -6, 0, -6, 1, -5, 1, -5, 2, -4, 2, -4, 3, -3, 3, -3, 2, -2, 2, -2, 8, 1, 8, 1, 5, 2, 5, 2, 4, 3, 4, 3, 2, 4, 2, 4, 1, 5, 1, 5, 0, 6, 0, 6, -3, 5, -3, 5, -4, 4, -4, 4, -5, 3, -5, 3, -6, 2, -6, 2, -7, 1, -7, 1, -8)
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

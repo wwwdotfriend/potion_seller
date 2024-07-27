@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="IngredientItem" load_steps=3 format=3 uid="uid://r0kraibcygwd"]
+
+[ext_resource type="Script" path="res://scripts/ingredient_item.gd" id="1_oycu7"]
+[ext_resource type="Texture2D" uid="uid://1b8vh3u83rgn" path="res://assets/art/ingredients/Moonberry.png" id="2_6dryd"]
+
+[resource]
+script = ExtResource("1_oycu7")
+name = "Moonberry"
+texture = ExtResource("2_6dryd")
+scene_path = "res://scenes/ingredients/moonberry.tscn"

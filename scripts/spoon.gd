@@ -1,27 +1,41 @@
-extends RigidBody2D
+extends CharacterBody2D
 
 signal clicked
 
 var held = false
+const GRAVITY = 900
+const FOLLOW_SPEED = 80.0  # Adjust this value to change how quickly it follows the cursor
 
-func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		if event.pressed:
-			clicked.emit(self)
-			rotation_degrees = 0
+var grab_offset = Vector2.ZERO
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	if held:
-		global_transform.origin = get_global_mouse_position()
+		var target_position = get_global_mouse_position() + grab_offset
+		var direction = (target_position - global_position).normalized()
+		var distance = global_position.distance_to(target_position)
+		
+		velocity = direction * min(FOLLOW_SPEED * distance, FOLLOW_SPEED * 50)
+		
+		var collision = move_and_collide(velocity * delta)
+		if collision:
+			var slide_vector = collision.get_remainder().slide(collision.get_normal())
+			move_and_collide(slide_vector)
+	else:
+		velocity.y += GRAVITY * delta
+		move_and_slide()
 
 func pickup():
 	if held:
 		return
-	freeze = true
-	held =  true
+	held = true
+	grab_offset = global_position - get_global_mouse_position()
 
-func drop(impulse=Vector2.ZERO):
-	if held:
-		freeze = false
-		apply_central_impulse(impulse)
-		held = false 
+func drop():
+	held = false
+	velocity = Vector2.ZERO  # Reset velocity when dropped
+
+func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.pressed:
+			print("spoon clicked")
+			clicked.emit(self)

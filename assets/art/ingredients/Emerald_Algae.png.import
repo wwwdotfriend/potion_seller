@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chxiheqn3cxuu"
-path="res://.godot/imported/hud_placeholder.png-5999e5e4cd831d02b8c85813ceae2608.ctex"
+uid="uid://bnbillvgxwbci"
+path="res://.godot/imported/Emerald_Algae.png-ba51e54aab4c9a71b1264a8860d69655.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/hud_placeholder.png"
-dest_files=["res://.godot/imported/hud_placeholder.png-5999e5e4cd831d02b8c85813ceae2608.ctex"]
+source_file="res://assets/art/ingredients/Emerald_Algae.png"
+dest_files=["res://.godot/imported/Emerald_Algae.png-ba51e54aab4c9a71b1264a8860d69655.ctex"]
 
 [params]
 
