@@ -1,6 +1,7 @@
 extends Node2D
 
 var held_object = null
+var current_item: IngredientItem = null
 
 func _ready() -> void:
 	for node in get_tree().get_nodes_in_group("pickable"):
@@ -37,7 +38,6 @@ func _check_for_drop():
 	if !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		_unhandled_input(InputEventMouseButton.new())
 
-
 func _on_panel_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("ingredient"):
 		body.queue_free()
@@ -47,3 +47,9 @@ func _on_mortar_above_body_entered(body: Node2D) -> void:
 		print("tool above")
 	if body.is_in_group("ingredient"):
 		print("ingredient above")
+
+func _on_mortar_inside_body_entered(body: Node2D) -> void:
+	if body.is_in_group("ingredient"):
+		print("ingredient inside")
+	if body.is_in_group("tool"):
+		print("tool above")

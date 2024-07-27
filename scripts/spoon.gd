@@ -32,10 +32,9 @@ func pickup():
 
 func drop():
 	held = false
-	velocity = Vector2.ZERO  # Reset velocity when dropped
+	velocity = Vector2.ZERO
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
-			print("spoon clicked")
 			clicked.emit(self)

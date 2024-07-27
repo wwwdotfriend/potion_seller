@@ -7,4 +7,4 @@
 script = ExtResource("1_66wro")
 name = "Sun's Grace Crocus"
 texture = ExtResource("2_1icyh")
-scene_path = "res://scenes/ingredients/shadowcap_mushroom.tscn"
+scene_path = "res://scenes/ingredients/suns_grace.tscn"

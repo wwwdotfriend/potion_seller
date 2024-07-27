@@ -28,6 +28,7 @@ position = Vector2(434, 0)
 shape = SubResource("RectangleShape2D_vjnww")
 
 [node name="CookArea" type="Area2D" parent="hud"]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hud/CookArea"]
 position = Vector2(-193, 6.3125)
@@ -38,7 +39,7 @@ process_callback = 0
 
 [node name="Cauldron" parent="." instance=ExtResource("5_babjq")]
 z_index = 1
-position = Vector2(-421, 199)
+position = Vector2(-222, 199)
 scale = Vector2(1.25, 1.25)
 
 [node name="tool" parent="." instance=ExtResource("4_heto1")]
@@ -59,7 +60,7 @@ shape = SubResource("RectangleShape2D_hofij")
 polygon = PackedVector2Array(12, 48, 12, 72, 36, 96, 36, 108, 92, 108, 92, 96, 116, 72, 116, 48)
 
 [node name="spoon" parent="." instance=ExtResource("6_5e0ct")]
-position = Vector2(-566, 247)
+position = Vector2(-454, 261)
 
 [connection signal="body_entered" from="hud/PanelArea" to="." method="_on_panel_area_body_entered"]
 [connection signal="body_entered" from="Mortar/MortarAbove" to="." method="_on_mortar_above_body_entered"]
