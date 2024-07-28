@@ -1,10 +1,16 @@
-[gd_resource type="Resource" script_class="IngredientItem" load_steps=3 format=3 uid="uid://dk2u0kuy808pu"]
+[gd_resource type="Resource" script_class="IngredientItem" load_steps=6 format=3 uid="uid://dk2u0kuy808pu"]
 
+[ext_resource type="Texture2D" uid="uid://icga14i6103n" path="res://assets/art/ingredients/mortar ingredients/BloodRoot_State1.png" id="1_lc522"]
 [ext_resource type="Script" path="res://scripts/ingredient_item.gd" id="1_pk3j2"]
 [ext_resource type="Texture2D" uid="uid://diqttwmufvbjg" path="res://assets/art/ingredients/Bloodroot.png" id="2_hxrvd"]
+[ext_resource type="Texture2D" uid="uid://buoubcep7ffia" path="res://assets/art/ingredients/mortar ingredients/Bloodroot_Crushed1.png" id="2_i77np"]
+[ext_resource type="Texture2D" uid="uid://cfcvcqtawa2bw" path="res://assets/art/ingredients/mortar ingredients/Bloodroot_Powder.png" id="3_b0gpl"]
 
 [resource]
 script = ExtResource("1_pk3j2")
 name = "Bloodroot"
 texture = ExtResource("2_hxrvd")
+mortar_sprite = ExtResource("1_lc522")
+crushed_sprite = ExtResource("2_i77np")
+powder_sprite = ExtResource("3_b0gpl")
 scene_path = "res://scenes/ingredients/bloodroot.tscn"

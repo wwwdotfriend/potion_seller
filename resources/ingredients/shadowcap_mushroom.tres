@@ -1,10 +1,16 @@
-[gd_resource type="Resource" script_class="IngredientItem" load_steps=3 format=3 uid="uid://dobstet76lmx0"]
+[gd_resource type="Resource" script_class="IngredientItem" load_steps=6 format=3 uid="uid://dobstet76lmx0"]
 
+[ext_resource type="Texture2D" uid="uid://iwd44v7iv7vj" path="res://assets/art/ingredients/mortar ingredients/ShadowCap_State1.png" id="1_403t1"]
 [ext_resource type="Script" path="res://scripts/ingredient_item.gd" id="1_mihxi"]
 [ext_resource type="Texture2D" uid="uid://cw5oamkip2hfk" path="res://assets/art/ingredients/Shadowcap_Mushroom.png" id="2_5rmfl"]
+[ext_resource type="Texture2D" uid="uid://cuq80vdg0al0p" path="res://assets/art/ingredients/mortar ingredients/ShadowCap_Crushed1.png" id="2_hyd8t"]
+[ext_resource type="Texture2D" uid="uid://boe2636va3egi" path="res://assets/art/ingredients/mortar ingredients/Shadowcap_Powder.png" id="3_edbct"]
 
 [resource]
 script = ExtResource("1_mihxi")
 name = "Shadowcap Mushroom"
 texture = ExtResource("2_5rmfl")
+mortar_sprite = ExtResource("1_403t1")
+crushed_sprite = ExtResource("2_hyd8t")
+powder_sprite = ExtResource("3_edbct")
 scene_path = "res://scenes/ingredients/shadowcap_mushroom.tscn"

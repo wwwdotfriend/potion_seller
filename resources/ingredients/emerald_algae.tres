@@ -1,10 +1,16 @@
-[gd_resource type="Resource" script_class="IngredientItem" load_steps=3 format=3 uid="uid://t5brw6fvmaqj"]
+[gd_resource type="Resource" script_class="IngredientItem" load_steps=6 format=3 uid="uid://t5brw6fvmaqj"]
 
 [ext_resource type="Script" path="res://scripts/ingredient_item.gd" id="1_0bbsx"]
+[ext_resource type="Texture2D" uid="uid://b4lf6sv6mj8ul" path="res://assets/art/ingredients/mortar ingredients/EmearaldAlgae_State1.png" id="1_uvkrh"]
 [ext_resource type="Texture2D" uid="uid://bnbillvgxwbci" path="res://assets/art/ingredients/Emerald_Algae.png" id="2_iqt5m"]
+[ext_resource type="Texture2D" uid="uid://bq6bj27p1d0hh" path="res://assets/art/ingredients/mortar ingredients/EmeraldAlgae_Crushed1.png" id="2_qvj8s"]
+[ext_resource type="Texture2D" uid="uid://bgrd3ehxga7v" path="res://assets/art/ingredients/mortar ingredients/EmeraldAlgae_Powder.png" id="3_ftn7p"]
 
 [resource]
 script = ExtResource("1_0bbsx")
 name = "Emerald Algae"
 texture = ExtResource("2_iqt5m")
+mortar_sprite = ExtResource("1_uvkrh")
+crushed_sprite = ExtResource("2_qvj8s")
+powder_sprite = ExtResource("3_ftn7p")
 scene_path = "res://scenes/ingredients/emerald_algae.tscn"

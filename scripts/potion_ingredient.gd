@@ -1,10 +1,10 @@
 extends RigidBody2D
 
 signal clicked
-signal pestled
 
 var held = false
 var grab_offset = Vector2.ZERO
+var ingredient_item: IngredientItem = null
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -27,3 +27,9 @@ func drop(impulse=Vector2.ZERO):
 		freeze = false
 		apply_central_impulse(impulse)
 		held = false 
+		
+func set_ingredient_item(item: IngredientItem):
+	ingredient_item = item
+
+func get_ingredient_item() -> IngredientItem:
+	return ingredient_item

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://7ee55h58ulca"]
+[gd_scene load_steps=10 format=3 uid="uid://7ee55h58ulca"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_tko5n"]
 [ext_resource type="PackedScene" uid="uid://cl4vsiund7gws" path="res://scenes/hud.tscn" id="2_455rb"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://b8u2sw1r0s78l" path="res://scenes/cauldron.tscn" id="5_babjq"]
 [ext_resource type="PackedScene" uid="uid://bitap1diibfci" path="res://scenes/mortar.tscn" id="5_o7byh"]
 [ext_resource type="PackedScene" uid="uid://d2bkqxuhp6he5" path="res://scenes/spoon.tscn" id="6_5e0ct"]
-[ext_resource type="Script" path="res://scenes/mortar.gd" id="7_c74i1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vjnww"]
 size = Vector2(412, 720)
@@ -15,23 +14,20 @@ size = Vector2(412, 720)
 size = Vector2(817, 624.625)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hofij"]
-size = Vector2(128, 588)
+size = Vector2(128, 587)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_tko5n")
-metadata/_edit_horizontal_guides_ = [259.0]
 
 [node name="hud" parent="." instance=ExtResource("2_455rb")]
 
 [node name="PanelArea" type="Area2D" parent="hud"]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hud/PanelArea"]
 position = Vector2(434, 0)
 shape = SubResource("RectangleShape2D_vjnww")
 
 [node name="CookArea" type="Area2D" parent="hud"]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hud/CookArea"]
 position = Vector2(-193, 6.3125)
@@ -40,32 +36,25 @@ shape = SubResource("RectangleShape2D_qwiuo")
 [node name="Camera2D" type="Camera2D" parent="."]
 process_callback = 0
 
-[node name="spoon" parent="." instance=ExtResource("6_5e0ct")]
-position = Vector2(-213, 228)
-collision_layer = 4
-collision_mask = 4
-
-[node name="pestle" parent="." groups=["pestle"] instance=ExtResource("4_heto1")]
-position = Vector2(96, 299)
-
 [node name="Cauldron" parent="." instance=ExtResource("5_babjq")]
+light_mask = 5
+visibility_layer = 5
 z_index = 1
-position = Vector2(-182, 319)
+position = Vector2(-421, 199)
 scale = Vector2(1.25, 1.25)
-collision_layer = 5
-collision_mask = 5
+
+[node name="tool" parent="." instance=ExtResource("4_heto1")]
+position = Vector2(165, 205)
 
 [node name="Mortar" parent="." instance=ExtResource("5_o7byh")]
-position = Vector2(96, 319)
-script = ExtResource("7_c74i1")
+position = Vector2(-16, 191)
 
 [node name="MortarAbove" type="Area2D" parent="Mortar"]
 collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mortar/MortarAbove"]
-visible = false
-position = Vector2(0, -386)
+position = Vector2(64, -258.5)
 shape = SubResource("RectangleShape2D_hofij")
 
 [node name="MortarInside" type="Area2D" parent="Mortar"]
@@ -73,32 +62,13 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mortar/MortarInside"]
-visible = false
-position = Vector2(-64, -128)
-polygon = PackedVector2Array(4, 44, 4, 68, 12, 74, 31, 100, 36, 108, 92, 108, 97, 100, 116, 74, 124, 68, 124, 44)
+polygon = PackedVector2Array(12, 48, 12, 72, 36, 96, 36, 108, 92, 108, 92, 96, 116, 72, 116, 48)
 
-[node name="IngredientMortarSprite" type="Sprite2D" parent="Mortar"]
-position = Vector2(-64, -136)
-scale = Vector2(4, 4)
-centered = false
-
-[node name="IngArea" type="Area2D" parent="Mortar/IngredientMortarSprite"]
-position = Vector2(16, 12)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mortar/IngredientMortarSprite/IngArea"]
-visible = false
-polygon = PackedVector2Array(-15, 0, 15, 0, 13, 9, 9, 12.5, -9, 12.5, -13, 9)
-
-[node name="MortarArea" type="Area2D" parent="Mortar"]
-collision_mask = 3
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mortar/MortarArea"]
-polygon = PackedVector2Array(-28, -20, -28, -32, -32, -32, -32, -36, -36, -36, -36, -40, -40, -40, -40, -44, -44, -44, -44, -48, -48, -48, -48, -52, -52, -52, -52, -56, 0, -56, 52, -56, 52, -52, 48, -52, 48, -48, 44, -48, 44, -44, 40, -44, 40, -40, 36, -40, 36, -36, 32, -36, 32, -32, 28, -32, 28, -20)
-
-[node name="MortarTimer" type="Timer" parent="."]
+[node name="spoon" parent="." instance=ExtResource("6_5e0ct")]
+position = Vector2(-566, 247)
+collision_layer = 4
+collision_mask = 4
 
 [connection signal="body_entered" from="hud/PanelArea" to="." method="_on_panel_area_body_entered"]
 [connection signal="body_entered" from="Mortar/MortarAbove" to="." method="_on_mortar_above_body_entered"]
 [connection signal="body_entered" from="Mortar/MortarInside" to="." method="_on_mortar_inside_body_entered"]
-[connection signal="input_event" from="Mortar/IngredientMortarSprite/IngArea" to="." method="_on_ing_area_input_event"]
-[connection signal="body_entered" from="Mortar/MortarArea" to="." method="_on_mortar_area_body_entered"]
