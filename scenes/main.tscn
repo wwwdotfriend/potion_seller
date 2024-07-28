@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://7ee55h58ulca"]
+[gd_scene load_steps=10 format=3 uid="uid://7ee55h58ulca"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_tko5n"]
 [ext_resource type="PackedScene" uid="uid://cl4vsiund7gws" path="res://scenes/hud.tscn" id="2_455rb"]
@@ -14,12 +14,8 @@ size = Vector2(412, 720)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qwiuo"]
 size = Vector2(817, 624.625)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hofij"]
-size = Vector2(128, 588)
-
 [node name="Main" type="Node2D"]
 script = ExtResource("1_tko5n")
-metadata/_edit_horizontal_guides_ = [259.0]
 
 [node name="hud" parent="." instance=ExtResource("2_455rb")]
 
@@ -59,15 +55,6 @@ collision_mask = 5
 position = Vector2(96, 319)
 script = ExtResource("7_c74i1")
 
-[node name="MortarAbove" type="Area2D" parent="Mortar"]
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Mortar/MortarAbove"]
-visible = false
-position = Vector2(0, -386)
-shape = SubResource("RectangleShape2D_hofij")
-
 [node name="MortarInside" type="Area2D" parent="Mortar"]
 collision_layer = 3
 collision_mask = 3
@@ -98,7 +85,8 @@ polygon = PackedVector2Array(-28, -20, -28, -32, -32, -32, -32, -36, -36, -36, -
 [node name="MortarTimer" type="Timer" parent="."]
 
 [connection signal="body_entered" from="hud/PanelArea" to="." method="_on_panel_area_body_entered"]
-[connection signal="body_entered" from="Mortar/MortarAbove" to="." method="_on_mortar_above_body_entered"]
 [connection signal="body_entered" from="Mortar/MortarInside" to="." method="_on_mortar_inside_body_entered"]
 [connection signal="input_event" from="Mortar/IngredientMortarSprite/IngArea" to="." method="_on_ing_area_input_event"]
 [connection signal="body_entered" from="Mortar/MortarArea" to="." method="_on_mortar_area_body_entered"]
+[connection signal="body_exited" from="Mortar/MortarArea" to="." method="_on_mortar_area_body_exited"]
+[connection signal="timeout" from="MortarTimer" to="." method="_on_mortar_timer_timeout"]

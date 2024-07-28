@@ -2,7 +2,11 @@ extends Node2D
 
 var held_object = null
 var current_ingredient: IngredientItem = null
+var pestle_in_mortar = false
+var pestle_moving = false
+
 @onready var raw_sprite = $Mortar/IngredientMortarSprite
+@onready var mortar_timer = $MortarTimer
 
 func _ready() -> void:
 	for node in get_tree().get_nodes_in_group("pickable"):
@@ -47,10 +51,6 @@ func _on_panel_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("ingredient"):
 		body.queue_free()
 
-func _on_mortar_above_body_entered(body: Node2D) -> void:
-	if body.is_in_group("ingredient"):
-		var ingredient = body.get_ingredient_item()
-
 func _on_mortar_inside_body_entered(body: Node2D) -> void:
 	if body.is_in_group("ingredient"):
 		current_ingredient = body.get_ingredient_item()
@@ -60,10 +60,6 @@ func _on_mortar_inside_body_entered(body: Node2D) -> void:
 			print(current_ingredient.name)
 		body.queue_free()
 		
-#func _input(event):
-	#if event is InputEventMouseMotion:
-		#print(event.relative)
-		
 func _on_ing_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if current_ingredient and !held_object:
@@ -71,6 +67,18 @@ func _on_ing_area_input_event(viewport: Node, event: InputEvent, shape_idx: int)
 			current_ingredient = null
 			$Mortar/IngredientMortarSprite.texture = null
 
+func on_that_grind() -> void:
+	pass # grinding logic will go here
+	
 func _on_mortar_area_body_entered(body: Node2D) -> void:
-	if body.is_in_group("pestle") and current_ingredient != null:
-		print("pestle in mortar area")
+	if body.is_in_group("pestle"):
+		pestle_in_mortar = true
+		print("pestle in mortar")
+
+func _on_mortar_area_body_exited(body: Node2D) -> void:
+	if body.is_in_group("pestle"):
+		pestle_in_mortar = false
+		print("pestle out mortar")
+
+func _on_mortar_timer_timeout() -> void:
+	print("timer done")
