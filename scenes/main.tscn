@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://7ee55h58ulca"]
+[gd_scene load_steps=11 format=3 uid="uid://7ee55h58ulca"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_tko5n"]
 [ext_resource type="PackedScene" uid="uid://cl4vsiund7gws" path="res://scenes/hud.tscn" id="2_455rb"]
@@ -12,6 +12,12 @@ size = Vector2(412, 720)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qwiuo"]
 size = Vector2(817, 624.625)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qefqu"]
+size = Vector2(95.2, 108)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fh4fm"]
+size = Vector2(95.6, 64.4)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_tko5n")
@@ -35,7 +41,7 @@ shape = SubResource("RectangleShape2D_qwiuo")
 [node name="Camera2D" type="Camera2D" parent="."]
 process_callback = 0
 
-[node name="spoon" parent="." instance=ExtResource("6_5e0ct")]
+[node name="spoon" parent="." groups=["spoon"] instance=ExtResource("6_5e0ct")]
 position = Vector2(-213, 228)
 collision_layer = 4
 collision_mask = 4
@@ -49,6 +55,27 @@ position = Vector2(-182, 319)
 scale = Vector2(1.25, 1.25)
 collision_layer = 5
 collision_mask = 5
+
+[node name="CauldronArea" type="Area2D" parent="Cauldron"]
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cauldron/CauldronArea"]
+visible = false
+position = Vector2(0.399994, -78)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_qefqu")
+
+[node name="CauldronInside" type="Area2D" parent="Cauldron"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cauldron/CauldronInside"]
+position = Vector2(0.199997, -62.2)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_fh4fm")
+
+[node name="IngredientCauldronSprite" type="Sprite2D" parent="Cauldron"]
+position = Vector2(0, -161.6)
+scale = Vector2(3, 3)
 
 [node name="Mortar" parent="." instance=ExtResource("5_o7byh")]
 position = Vector2(96, 319)
@@ -80,13 +107,19 @@ collision_mask = 3
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mortar/MortarArea"]
 polygon = PackedVector2Array(-28, -20, -28, -32, -32, -32, -32, -36, -36, -36, -36, -40, -40, -40, -40, -44, -44, -44, -44, -48, -48, -48, -48, -52, -52, -52, -52, -56, 0, -56, 52, -56, 52, -52, 48, -52, 48, -48, 44, -48, 44, -44, 40, -44, 40, -40, 36, -40, 36, -36, 32, -36, 32, -32, 28, -32, 28, -20)
 
+[node name="CauldronTimer" type="Timer" parent="."]
+
 [node name="MortarTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
 
 [connection signal="body_entered" from="hud/PanelArea" to="." method="_on_panel_area_body_entered"]
+[connection signal="body_entered" from="Cauldron/CauldronArea" to="." method="_on_cauldron_area_body_entered"]
+[connection signal="body_exited" from="Cauldron/CauldronArea" to="." method="_on_cauldron_area_body_exited"]
+[connection signal="body_entered" from="Cauldron/CauldronInside" to="." method="_on_cauldron_inside_body_entered"]
 [connection signal="body_entered" from="Mortar/MortarInside" to="." method="_on_mortar_inside_body_entered"]
 [connection signal="input_event" from="Mortar/IngredientMortarSprite/IngArea" to="." method="_on_ing_area_input_event"]
 [connection signal="body_entered" from="Mortar/MortarArea" to="." method="_on_mortar_area_body_entered"]
 [connection signal="body_exited" from="Mortar/MortarArea" to="." method="_on_mortar_area_body_exited"]
+[connection signal="timeout" from="CauldronTimer" to="." method="_on_cauldron_timer_timeout"]
 [connection signal="timeout" from="MortarTimer" to="." method="_on_mortar_timer_timeout"]

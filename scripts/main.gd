@@ -4,12 +4,15 @@ var held_object = null
 var current_ingredient: IngredientItem = null
 var pestle_in_mortar = true
 var last_pestle_position: Vector2
+var last_spoon_position: Vector2
 
 var spoon_in_cauldron = true
 
 @onready var sprite = $Mortar/IngredientMortarSprite
 @onready var mortar_timer = $MortarTimer
 @onready var pestle = $pestle
+@onready var spoon = $spoon
+@onready var cauldron_timer = $CauldronTimer
 
 func _ready() -> void:
 	for node in get_tree().get_nodes_in_group("pickable"):
@@ -18,19 +21,36 @@ func _ready() -> void:
 		node.slot_clicked.connect(slot_clicked)
 
 func _process(delta: float) -> void:
+	grind_time()
+	cauldron_time()
+
+func grind_time():
 	if current_ingredient and current_ingredient.state == IngredientItem.State.RAW and pestle_in_mortar and held_object:
 		if held_object.global_position != last_pestle_position:
 			if mortar_timer.is_stopped():
 				mortar_timer.start()
 				print("timer started")
 		last_pestle_position = pestle.global_position
-	elif mortar_timer.time_left > 0:
+	elif mortar_timer.time_left >= 0:
 		mortar_timer.stop
-	
+		print("mortar timer done")
+		
+func cauldron_time():
+	if current_ingredient and current_ingredient.state == IngredientItem.State.CRUSHED and spoon_in_cauldron and held_object:
+		if held_object.global_position != last_spoon_position:
+			if cauldron_timer.is_stopped():
+				cauldron_timer.start()
+				print("cauldron timer started")
+		last_spoon_position = spoon.global_position
+	elif cauldron_timer.time_left >= 0:
+		cauldron_timer.stop
+		print("cauldron timer stopped")
+
 func slot_clicked(item: IngredientItem) -> void:
 	var scene = load(item.raw_scene_path)
 	var scene_instance = scene.instantiate()
 	scene_instance.set_ingredient_item(item)
+	item.state = IngredientItem.State.RAW
 	scene_instance.global_position = get_global_mouse_position()
 	add_child(scene_instance)
 	scene_instance.clicked.connect(_on_pickable_clicked)
@@ -82,7 +102,6 @@ func _on_mortar_inside_body_entered(body: Node2D) -> void:
 				$Mortar/IngredientMortarSprite.texture = current_ingredient.mortar_sprite
 			elif current_ingredient.state == IngredientItem.State.CRUSHED:
 				$Mortar/IngredientMortarSprite.texture = current_ingredient.crushed_sprite
-			print(current_ingredient.name)
 		body.queue_free()
 		
 func _on_ing_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
@@ -92,7 +111,7 @@ func _on_ing_area_input_event(viewport: Node, event: InputEvent, shape_idx: int)
 				slot_clicked(current_ingredient)
 				current_ingredient = null
 				$Mortar/IngredientMortarSprite.texture = null
-			if current_ingredient.state == IngredientItem.State.CRUSHED:
+			elif current_ingredient.state == IngredientItem.State.CRUSHED:
 				mortar_clicked(current_ingredient)
 				current_ingredient = null
 				$Mortar/IngredientMortarSprite.texture = null
@@ -111,3 +130,28 @@ func _on_mortar_timer_timeout() -> void:
 	if current_ingredient:
 		current_ingredient.state = IngredientItem.State.CRUSHED
 		sprite.texture = current_ingredient.crushed_sprite
+
+func _on_cauldron_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("spoon"):
+		spoon_in_cauldron = true
+		print("spoon in cauldron")
+
+func _on_cauldron_area_body_exited(body: Node2D) -> void:
+	if body.is_in_group("spoon"):
+		spoon_in_cauldron = false
+		print("spoon out cauldron")
+
+func _on_cauldron_inside_body_entered(body: Node2D) -> void:
+	if body.is_in_group("ingredient"):
+		current_ingredient = body.get_ingredient_item()
+		if current_ingredient:
+			if current_ingredient.state == IngredientItem.State.RAW:
+				print("its raw")
+			elif current_ingredient.state == IngredientItem.State.CRUSHED:
+				$Cauldron/IngredientCauldronSprite.texture = current_ingredient.crushed_sprite
+				current_ingredient.state = IngredientItem.State.CAULDRON
+				print("in cauldron")
+				body.queue_free()
+
+func _on_cauldron_timer_timeout() -> void:
+	pass # Replace with function body.

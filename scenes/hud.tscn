@@ -31,7 +31,6 @@ script = ExtResource("2_w38ve")
 texture = ExtResource("2_f3ou4")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-visible = false
 collision_layer = 7
 collision_mask = 7
 
@@ -59,8 +58,8 @@ offset_bottom = -4.00002
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 visible = false
-collision_layer = 2
-collision_mask = 2
+collision_layer = 6
+collision_mask = 6
 
 [node name="CollisionOneWay" type="CollisionShape2D" parent="StaticBody2D2"]
 position = Vector2(223, 6)
