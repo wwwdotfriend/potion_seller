@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Potion" load_steps=5 format=3 uid="uid://4luesfjsjpdl"]
+
+[ext_resource type="Script" path="res://scripts/ingredient_item.gd" id="1_5bqtw"]
+[ext_resource type="Resource" uid="uid://dk2u0kuy808pu" path="res://resources/ingredients/bloodroot.tres" id="2_05g6g"]
+[ext_resource type="Script" path="res://scripts/potion.gd" id="2_ifowe"]
+[ext_resource type="Texture2D" uid="uid://bvog1nmt4eq2h" path="res://assets/art/potions/Potion_of_Healing.png" id="3_a8hm7"]
+
+[resource]
+script = ExtResource("2_ifowe")
+name = "Potion of Healing"
+sprite = ExtResource("3_a8hm7")
+recipe = Array[ExtResource("1_5bqtw")]([ExtResource("2_05g6g"), ExtResource("2_05g6g")])
+base_value = 0
+description = ""

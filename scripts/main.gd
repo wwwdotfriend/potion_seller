@@ -2,11 +2,15 @@ extends Node2D
 
 var held_object = null
 var current_ingredient: IngredientItem = null
+
 var pestle_in_mortar = true
+var spoon_in_cauldron = true
+
 var last_pestle_position: Vector2
 var last_spoon_position: Vector2
 
-var spoon_in_cauldron = true
+var mortar_full = false
+var cauldron_full = false
 
 @onready var sprite = $Mortar/IngredientMortarSprite
 @onready var mortar_timer = $MortarTimer
@@ -25,24 +29,24 @@ func _process(delta: float) -> void:
 	cauldron_time()
 
 func grind_time():
-	if current_ingredient and current_ingredient.state == IngredientItem.State.RAW and pestle_in_mortar and held_object:
+	if current_ingredient and current_ingredient.state == IngredientItem.State.RAW and pestle_in_mortar and held_object and mortar_full:
 		if held_object.global_position != last_pestle_position:
 			if mortar_timer.is_stopped():
 				mortar_timer.start()
 				print("timer started")
 		last_pestle_position = pestle.global_position
-	elif mortar_timer.time_left >= 0:
+	elif not mortar_timer.is_stopped():
 		mortar_timer.stop
 		print("mortar timer done")
 		
 func cauldron_time():
-	if current_ingredient and current_ingredient.state == IngredientItem.State.CRUSHED and spoon_in_cauldron and held_object:
+	if current_ingredient and current_ingredient.state == IngredientItem.State.CRUSHED and spoon_in_cauldron and held_object and cauldron_full:
 		if held_object.global_position != last_spoon_position:
 			if cauldron_timer.is_stopped():
 				cauldron_timer.start()
 				print("cauldron timer started")
 		last_spoon_position = spoon.global_position
-	elif cauldron_timer.time_left >= 0:
+	elif not cauldron_timer.is_stopped():
 		cauldron_timer.stop
 		print("cauldron timer stopped")
 
@@ -103,6 +107,7 @@ func _on_mortar_inside_body_entered(body: Node2D) -> void:
 			elif current_ingredient.state == IngredientItem.State.CRUSHED:
 				$Mortar/IngredientMortarSprite.texture = current_ingredient.crushed_sprite
 		body.queue_free()
+		mortar_full = true
 		
 func _on_ing_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -115,6 +120,7 @@ func _on_ing_area_input_event(viewport: Node, event: InputEvent, shape_idx: int)
 				mortar_clicked(current_ingredient)
 				current_ingredient = null
 				$Mortar/IngredientMortarSprite.texture = null
+		mortar_full = false
 
 func _on_mortar_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("pestle"):

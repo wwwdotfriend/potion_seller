@@ -63,14 +63,12 @@ collision_mask = 5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cauldron/CauldronArea"]
 visible = false
 position = Vector2(0.399994, -78)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_qefqu")
 
 [node name="CauldronInside" type="Area2D" parent="Cauldron"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cauldron/CauldronInside"]
 position = Vector2(0.199997, -62.2)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_fh4fm")
 
 [node name="IngredientCauldronSprite" type="Sprite2D" parent="Cauldron"]
