@@ -18,7 +18,7 @@ func _ready() -> void:
 		node.slot_clicked.connect(slot_clicked)
 
 func _process(delta: float) -> void:
-	if current_ingredient and pestle_in_mortar and held_object:
+	if current_ingredient and current_ingredient.state == IngredientItem.State.RAW and pestle_in_mortar and held_object:
 		if held_object.global_position != last_pestle_position:
 			if mortar_timer.is_stopped():
 				mortar_timer.start()
@@ -77,9 +77,11 @@ func _on_panel_area_body_entered(body: Node2D) -> void:
 func _on_mortar_inside_body_entered(body: Node2D) -> void:
 	if body.is_in_group("ingredient"):
 		current_ingredient = body.get_ingredient_item()
-		var mortar_sprite = current_ingredient.mortar_sprite
-		$Mortar/IngredientMortarSprite.texture = mortar_sprite
 		if current_ingredient:
+			if current_ingredient.state == IngredientItem.State.RAW:
+				$Mortar/IngredientMortarSprite.texture = current_ingredient.mortar_sprite
+			elif current_ingredient.state == IngredientItem.State.CRUSHED:
+				$Mortar/IngredientMortarSprite.texture = current_ingredient.crushed_sprite
 			print(current_ingredient.name)
 		body.queue_free()
 		
