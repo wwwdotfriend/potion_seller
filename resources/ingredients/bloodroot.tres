@@ -8,10 +8,12 @@
 
 [resource]
 script = ExtResource("1_pk3j2")
-name = "Bloodroot"
+name = "bloodroot"
+display_name = "Bloodroot"
 texture = ExtResource("2_hxrvd")
 mortar_sprite = ExtResource("1_lc522")
 crushed_sprite = ExtResource("2_i77np")
 powder_sprite = ExtResource("3_b0gpl")
 raw_scene_path = "res://scenes/ingredients/bloodroot.tscn"
 crushed_scene_path = "res://scenes/ingredients/bloodroot_powder.tscn"
+potion_scene_path = ""

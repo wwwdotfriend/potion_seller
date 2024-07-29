@@ -8,10 +8,12 @@
 
 [resource]
 script = ExtResource("1_oycu7")
-name = "Moonberry"
+name = "moonberry"
+display_name = "Moonberry"
 texture = ExtResource("2_6dryd")
 mortar_sprite = ExtResource("1_hsbdo")
 crushed_sprite = ExtResource("2_a67pq")
 powder_sprite = ExtResource("3_ywrht")
 raw_scene_path = "res://scenes/ingredients/moonberry.tscn"
 crushed_scene_path = "res://scenes/ingredients/moonberry_powder.tscn"
+potion_scene_path = ""

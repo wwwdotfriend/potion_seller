@@ -8,10 +8,12 @@
 
 [resource]
 script = ExtResource("1_66wro")
-name = "Sun's Grace Crocus"
+name = "suns_grace"
+display_name = "Sun's Grace Crocus"
 texture = ExtResource("2_1icyh")
 mortar_sprite = ExtResource("1_uv8ye")
 crushed_sprite = ExtResource("2_aa7ut")
 powder_sprite = ExtResource("3_7ntxm")
 raw_scene_path = "res://scenes/ingredients/suns_grace.tscn"
 crushed_scene_path = "res://scenes/ingredients/suns_grace_powder.tscn"
+potion_scene_path = ""
