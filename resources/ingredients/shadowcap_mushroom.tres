@@ -13,4 +13,5 @@ texture = ExtResource("2_5rmfl")
 mortar_sprite = ExtResource("1_403t1")
 crushed_sprite = ExtResource("2_hyd8t")
 powder_sprite = ExtResource("3_edbct")
-scene_path = "res://scenes/ingredients/shadowcap_mushroom.tscn"
+raw_scene_path = "res://scenes/ingredients/shadowcap_mushroom.tscn"
+crushed_scene_path = "res://scenes/ingredients/shadowcap_mushroom_powder.tscn"

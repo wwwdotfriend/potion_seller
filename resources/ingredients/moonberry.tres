@@ -13,4 +13,5 @@ texture = ExtResource("2_6dryd")
 mortar_sprite = ExtResource("1_hsbdo")
 crushed_sprite = ExtResource("2_a67pq")
 powder_sprite = ExtResource("3_ywrht")
-scene_path = "res://scenes/ingredients/moonberry.tscn"
+raw_scene_path = "res://scenes/ingredients/moonberry.tscn"
+crushed_scene_path = "res://scenes/ingredients/moonberry_powder.tscn"

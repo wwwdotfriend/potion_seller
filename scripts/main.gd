@@ -2,8 +2,10 @@ extends Node2D
 
 var held_object = null
 var current_ingredient: IngredientItem = null
-var pestle_in_mortar = false
+var pestle_in_mortar = true
 var last_pestle_position: Vector2
+
+var spoon_in_cauldron = true
 
 @onready var sprite = $Mortar/IngredientMortarSprite
 @onready var mortar_timer = $MortarTimer
@@ -26,7 +28,17 @@ func _process(delta: float) -> void:
 		mortar_timer.stop
 	
 func slot_clicked(item: IngredientItem) -> void:
-	var scene = load(item.scene_path)
+	var scene = load(item.raw_scene_path)
+	var scene_instance = scene.instantiate()
+	scene_instance.set_ingredient_item(item)
+	scene_instance.global_position = get_global_mouse_position()
+	add_child(scene_instance)
+	scene_instance.clicked.connect(_on_pickable_clicked)
+	_on_pickable_clicked(scene_instance)
+	call_deferred("_check_for_drop")
+	
+func mortar_clicked(item: IngredientItem) -> void:
+	var scene = load(item.crushed_scene_path)
 	var scene_instance = scene.instantiate()
 	scene_instance.set_ingredient_item(item)
 	scene_instance.global_position = get_global_mouse_position()
@@ -74,9 +86,14 @@ func _on_mortar_inside_body_entered(body: Node2D) -> void:
 func _on_ing_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if current_ingredient and !held_object:
-			slot_clicked(current_ingredient)
-			current_ingredient = null
-			$Mortar/IngredientMortarSprite.texture = null
+			if current_ingredient.state == IngredientItem.State.RAW:
+				slot_clicked(current_ingredient)
+				current_ingredient = null
+				$Mortar/IngredientMortarSprite.texture = null
+			if current_ingredient.state == IngredientItem.State.CRUSHED:
+				mortar_clicked(current_ingredient)
+				current_ingredient = null
+				$Mortar/IngredientMortarSprite.texture = null
 
 func _on_mortar_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("pestle"):

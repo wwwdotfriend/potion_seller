@@ -7,7 +7,8 @@ class_name IngredientItem
 
 @export var crushed_sprite: Texture2D
 @export var powder_sprite: Texture2D
-@export var scene_path: String = ""
+@export var raw_scene_path: String = ""
+@export var crushed_scene_path: String = ""
 
 enum State { RAW, CRUSHED }
 var state = State.RAW
