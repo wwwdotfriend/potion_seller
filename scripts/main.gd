@@ -3,10 +3,11 @@ extends Node2D
 var held_object = null
 var current_ingredient: IngredientItem = null
 var pestle_in_mortar = false
-var pestle_moving = false
+var last_pestle_position: Vector2
 
-@onready var raw_sprite = $Mortar/IngredientMortarSprite
+@onready var sprite = $Mortar/IngredientMortarSprite
 @onready var mortar_timer = $MortarTimer
+@onready var pestle = $pestle
 
 func _ready() -> void:
 	for node in get_tree().get_nodes_in_group("pickable"):
@@ -14,6 +15,16 @@ func _ready() -> void:
 	for node in get_tree().get_nodes_in_group("inv_slot"):
 		node.slot_clicked.connect(slot_clicked)
 
+func _process(delta: float) -> void:
+	if current_ingredient and pestle_in_mortar and held_object:
+		if held_object.global_position != last_pestle_position:
+			if mortar_timer.is_stopped():
+				mortar_timer.start()
+				print("timer started")
+		last_pestle_position = pestle.global_position
+	elif mortar_timer.time_left > 0:
+		mortar_timer.stop
+	
 func slot_clicked(item: IngredientItem) -> void:
 	var scene = load(item.scene_path)
 	var scene_instance = scene.instantiate()
@@ -42,7 +53,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and held_object:
 		held_object.drop()
 		held_object = null
-			
+		
 func _check_for_drop():
 	if !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		_unhandled_input(InputEventMouseButton.new())
@@ -67,9 +78,6 @@ func _on_ing_area_input_event(viewport: Node, event: InputEvent, shape_idx: int)
 			current_ingredient = null
 			$Mortar/IngredientMortarSprite.texture = null
 
-func on_that_grind() -> void:
-	pass # grinding logic will go here
-	
 func _on_mortar_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("pestle"):
 		pestle_in_mortar = true
@@ -81,4 +89,6 @@ func _on_mortar_area_body_exited(body: Node2D) -> void:
 		print("pestle out mortar")
 
 func _on_mortar_timer_timeout() -> void:
-	print("timer done")
+	if current_ingredient:
+		current_ingredient.state = IngredientItem.State.CRUSHED
+		sprite.texture = current_ingredient.crushed_sprite
