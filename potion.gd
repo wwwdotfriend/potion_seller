@@ -16,6 +16,7 @@ func pickup():
 	freeze = true
 	held = true
 	grab_offset = global_position - get_global_mouse_position()
+	rotation = 0
 
 func drop(impulse=Vector2.ZERO):
 	if held:
@@ -24,7 +25,7 @@ func drop(impulse=Vector2.ZERO):
 		held = false 
 		
 func set_potion(p: Potion):
-	p = potion
+	potion = p
 
 func get_potion() -> Potion:
 	return potion

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nu0vq5ns2sdw"
-path="res://.godot/imported/Potion_of_Healing.png-6bb5e8d363860ae7823dfee287b47867.ctex"
+uid="uid://fq7e0ds5n1wp"
+path="res://.godot/imported/hud_placeholder4.png-5913a25bf1fca8dd67d5e8664fc9e156.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/potions/Potion_of_Healing.png"
-dest_files=["res://.godot/imported/Potion_of_Healing.png-6bb5e8d363860ae7823dfee287b47867.ctex"]
+source_file="res://assets/art/hud_placeholder4.png"
+dest_files=["res://.godot/imported/hud_placeholder4.png-5913a25bf1fca8dd67d5e8664fc9e156.ctex"]
 
 [params]
 
