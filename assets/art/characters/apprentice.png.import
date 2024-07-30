@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0afjb58ed5fk"
-path="res://.godot/imported/potionseller.png-b7c424ae290ee7aa1181dc15f407af6a.ctex"
+uid="uid://dh0vl0rtdp5tv"
+path="res://.godot/imported/apprentice.png-88b048275ccb2dbb0704cc0be5facd31.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/potionseller.png"
-dest_files=["res://.godot/imported/potionseller.png-b7c424ae290ee7aa1181dc15f407af6a.ctex"]
+source_file="res://assets/art/characters/apprentice.png"
+dest_files=["res://.godot/imported/apprentice.png-88b048275ccb2dbb0704cc0be5facd31.ctex"]
 
 [params]
 

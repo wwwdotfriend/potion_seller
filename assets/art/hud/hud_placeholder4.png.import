@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dh0vl0rtdp5tv"
-path="res://.godot/imported/apprentice.png-0e7924d654f34192bfa2d9c470e964ae.ctex"
+uid="uid://fq7e0ds5n1wp"
+path="res://.godot/imported/hud_placeholder4.png-c99fa402d8b401d7ca124b47b134cda8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/apprentice.png"
-dest_files=["res://.godot/imported/apprentice.png-0e7924d654f34192bfa2d9c470e964ae.ctex"]
+source_file="res://assets/art/hud/hud_placeholder4.png"
+dest_files=["res://.godot/imported/hud_placeholder4.png-c99fa402d8b401d7ca124b47b134cda8.ctex"]
 
 [params]
 

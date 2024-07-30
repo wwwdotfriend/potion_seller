@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnn2u8tbq2y0q"
-path="res://.godot/imported/hud1.png-67d60b2b8ec9fa8cfcd041ac2bd5961a.ctex"
+uid="uid://b0afjb58ed5fk"
+path="res://.godot/imported/potionseller.png-8c83addb2ca1187c7b07ba47423f708d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/hud1.png"
-dest_files=["res://.godot/imported/hud1.png-67d60b2b8ec9fa8cfcd041ac2bd5961a.ctex"]
+source_file="res://assets/art/characters/potionseller.png"
+dest_files=["res://.godot/imported/potionseller.png-8c83addb2ca1187c7b07ba47423f708d.ctex"]
 
 [params]
 

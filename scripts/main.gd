@@ -238,5 +238,3 @@ func _on_cauldron_timer_timeout() -> void:
 	if can_brew and current_potion != "":
 		print("Brewed: ", current_potion)
 		can_brew = false
-	else:
-		print("Stirring complete, but no potion was brewed.")
