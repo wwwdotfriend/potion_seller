@@ -17,17 +17,16 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]
 
 directories/dch_directory={
-"apprenticemaintalk": "res://assets/art/apprenticemaintalk.dch",
-"character": "res://assets/art/character.dch",
-"characternotfocus": "res://assets/art/potions/characternotfocus.dch",
 "pinkgirlsad": "res://pinkgirlsad.dch",
-"potionCharacter": "res://assets/art/potionCharacter.dch"
+"pinky_main": "res://assets/art/pinky_main.dch",
+"potionCharacter": "res://assets/art/potionCharacter.dch",
+"potion_seller": "res://assets/art/potion_seller.dch",
+"potion_seller_small": "res://assets/art/potion_seller_small.dch"
 }
 directories/dtl_directory={
 "ellastart": "res://assets/art/ellastart.dtl"

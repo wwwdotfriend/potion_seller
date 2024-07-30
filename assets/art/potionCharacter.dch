@@ -21,7 +21,7 @@
 },
 "mirror": false,
 "offset": Vector2(150, -170),
-"scale": 0.25,
+"scale": 0.3,
 "scene": ""
 }
 },
