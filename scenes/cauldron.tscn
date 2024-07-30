@@ -1,14 +1,14 @@
 [gd_scene load_steps=2 format=3 uid="uid://b8u2sw1r0s78l"]
 
-[ext_resource type="Texture2D" uid="uid://dtr47rg3gp3qo" path="res://assets/art/cauldron_2.png" id="1_ytnhc"]
+[ext_resource type="Texture2D" uid="uid://cp2a7rshtfsje" path="res://assets/art/cauldronshadow.png" id="1_iiork"]
 
 [node name="Cauldron" type="StaticBody2D"]
 metadata/_edit_horizontal_guides_ = [-96.0, -72.0]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -96)
+position = Vector2(0, -67)
 scale = Vector2(6, 6)
-texture = ExtResource("1_ytnhc")
+texture = ExtResource("1_iiork")
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
 visible = false

@@ -11,7 +11,7 @@ size = Vector2(14, 646)
 size = Vector2(843, 11)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mcbku"]
-size = Vector2(1218, 10)
+size = Vector2(1218, 76)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q31a3"]
 size = Vector2(646, 13.9993)
@@ -35,26 +35,29 @@ collision_layer = 7
 collision_mask = 7
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+visible = false
 position = Vector2(-607.5, 6)
 shape = SubResource("RectangleShape2D_blb3d")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+visible = false
 position = Vector2(223, 6)
 shape = SubResource("RectangleShape2D_blb3d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+visible = false
 position = Vector2(-191.5, -311.5)
 shape = SubResource("RectangleShape2D_jys53")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(4, 324)
+position = Vector2(4, 291)
 shape = SubResource("RectangleShape2D_mcbku")
 
 [node name="Inventory" parent="." instance=ExtResource("2_566x2")]
 offset_left = 243.0
-offset_top = -113.0
-offset_right = 435.0
-offset_bottom = 15.0
+offset_top = -33.0
+offset_right = 441.0
+offset_bottom = 97.0
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 visible = false

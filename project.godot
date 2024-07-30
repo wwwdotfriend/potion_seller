@@ -31,8 +31,8 @@ directories/dch_directory={
 directories/dtl_directory={
 "ellastart": "res://assets/art/ellastart.dtl"
 }
-layout/style_list=["res://assets/art/dialogue_template/VN Style Premade.tres"]
-layout/default_style="res://assets/art/dialogue_template/VN Style Premade.tres"
+layout/style_list=["res://assets/dialogue/style1.tres"]
+layout/default_style="res://assets/dialogue/style1.tres"
 glossary/default_case_sensitive=true
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.01
@@ -78,6 +78,7 @@ folder_colors={
 pickable=""
 ingredient=""
 tool=""
+potion=""
 
 [input]
 

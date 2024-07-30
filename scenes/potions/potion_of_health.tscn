@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://nu0vq5ns2sdw" path="res://assets/art/potions/Potion_of_Healing.png" id="1_1ee71"]
 [ext_resource type="Script" path="res://potion.gd" id="1_r2a13"]
 
-[node name="PotionOfHealth" type="RigidBody2D" groups=["pickable"]]
+[node name="PotionOfHealth" type="RigidBody2D" groups=["pickable", "potion"]]
 input_pickable = true
 script = ExtResource("1_r2a13")
 

@@ -1,4 +1,3 @@
-[background arg="res://assets/art/POTIONBG1-export.png" fade="0.0"]
 [music path="res://assets/sound/16Bit Fantasy RPG  Town Music 2.mp3" fade="0.0" volume="0.0"]
 join potion_seller center
 potion_seller: Hey.. um..

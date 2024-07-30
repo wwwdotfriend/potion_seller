@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://7ee55h58ulca"]
+[gd_scene load_steps=15 format=3 uid="uid://7ee55h58ulca"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_tko5n"]
 [ext_resource type="PackedScene" uid="uid://cl4vsiund7gws" path="res://scenes/hud.tscn" id="2_455rb"]
@@ -6,13 +6,20 @@
 [ext_resource type="PackedScene" uid="uid://b8u2sw1r0s78l" path="res://scenes/cauldron.tscn" id="5_babjq"]
 [ext_resource type="PackedScene" uid="uid://bitap1diibfci" path="res://scenes/mortar.tscn" id="5_o7byh"]
 [ext_resource type="PackedScene" uid="uid://d2bkqxuhp6he5" path="res://scenes/spoon.tscn" id="6_5e0ct"]
-[ext_resource type="Texture2D" uid="uid://dh0vl0rtdp5tv" path="res://assets/art/characters/apprentice.png" id="7_uh2kf"]
+[ext_resource type="Texture2D" uid="uid://b0afjb58ed5fk" path="res://assets/art/characters/potionseller.png" id="7_0j6wh"]
+[ext_resource type="Script" path="res://scenes/customer.gd" id="7_1mxwi"]
+[ext_resource type="Texture2D" uid="uid://djv33dv1775eu" path="res://assets/art/hud/PanelDialogueBox.png" id="8_08f7r"]
+[ext_resource type="Texture2D" uid="uid://ccovj7g1gth51" path="res://assets/art/POTIONBG1-export.png" id="8_aun83"]
+[ext_resource type="Texture2D" uid="uid://co3rbqt525twy" path="res://assets/art/potions/EmptyBottle.png" id="11_hfqn5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vjnww"]
 size = Vector2(412, 720)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qwiuo"]
 size = Vector2(817, 624.625)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lama4"]
+size = Vector2(137.5, 138.5)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_tko5n")
@@ -37,16 +44,16 @@ shape = SubResource("RectangleShape2D_qwiuo")
 process_callback = 0
 
 [node name="spoon" parent="." groups=["spoon"] instance=ExtResource("6_5e0ct")]
-position = Vector2(-213, 228)
+position = Vector2(-471, 111)
 collision_layer = 4
 collision_mask = 4
 
 [node name="pestle" parent="." groups=["pestle"] instance=ExtResource("4_heto1")]
-position = Vector2(96, 299)
+position = Vector2(109, 215)
 
 [node name="Cauldron" parent="." instance=ExtResource("5_babjq")]
 z_index = 1
-position = Vector2(-182, 319)
+position = Vector2(-471, 251)
 scale = Vector2(1.25, 1.25)
 collision_layer = 5
 collision_mask = 5
@@ -56,6 +63,7 @@ collision_layer = 5
 collision_mask = 5
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cauldron/CauldronArea"]
+visible = false
 polygon = PackedVector2Array(-42.4, -126.4, -36, -126.4, -36, -132, -12, -132, -12, -137.6, -6.39999, -137.6, -6.39999, -144, 6.39999, -144, 6.39999, -137.6, 12, -137.6, 12, -132, 35.2, -132, 35.2, -126.4, 42.4, -126.4, 42.4, -138.4, 53.6, -138.4, 53.6, -131.2, 65.6, -131.2, 65.6, -124.8, 71.2, -124.8, 71.2, -119.2, 77.6, -119.2, 77.6, -113.6, 83.2, -113.6, 83.2, -78.4, 76.8, -78.4, 76.8, -73.6, 71.2, -73.6, 71.2, -66.4, 64.8, -66.4, 64.8, -60.8, 60, -60.8, 60, -54.4, 53.6, -54.4, 53.6, -48, 48, -48, 48, -24, -48, -24, -48, -48.8, -84, -78.4, -84, -114.4, -65.6, -132, -53.6, -132, -53.6, -138.4, -42.4, -138.4)
 
 [node name="CauldronInside" type="Area2D" parent="Cauldron"]
@@ -63,6 +71,7 @@ collision_layer = 5
 collision_mask = 5
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Cauldron/CauldronInside"]
+visible = false
 polygon = PackedVector2Array(-42.4, -126.4, -36, -126.4, -36, -132, -12, -132, -12, -137.6, -6.39999, -137.6, -6.39999, -144, 6.39999, -144, 6.39999, -137.6, 12, -137.6, 12, -132, 35.2, -132, 35.2, -126.4, 42.4, -126.4, 42.4, -138.4, 53.6, -138.4, 53.6, -131.2, 65.6, -131.2, 65.6, -124.8, 71.2, -124.8, 71.2, -119.2, 77.6, -119.2, 77.6, -113.6, 83.2, -113.6, 83.2, -78.4, 76.8, -78.4, 76.8, -73.6, 71.2, -73.6, 71.2, -66.4, 64.8, -66.4, 64.8, -60.8, 60, -60.8, 60, -54.4, 53.6, -54.4, 53.6, -48, 48, -48, 48, -24, -48, -24, -48, -48.8, -84, -78.4, -84, -114.4, -65.6, -132, -53.6, -132, -53.6, -138.4, -42.4, -138.4)
 
 [node name="IngredientCauldronSprite" type="Sprite2D" parent="Cauldron"]
@@ -70,7 +79,7 @@ position = Vector2(0, -161.6)
 scale = Vector2(3, 3)
 
 [node name="Mortar" parent="." instance=ExtResource("5_o7byh")]
-position = Vector2(96, 319)
+position = Vector2(111, 254)
 
 [node name="MortarInside" type="Area2D" parent="Mortar"]
 collision_layer = 3
@@ -97,6 +106,7 @@ polygon = PackedVector2Array(-15, 0, 15, 0, 13, 9, 9, 12.5, -9, 12.5, -13, 9)
 collision_mask = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mortar/MortarArea"]
+visible = false
 polygon = PackedVector2Array(-28, -20, -28, -32, -32, -32, -32, -36, -36, -36, -36, -40, -40, -40, -40, -44, -44, -44, -44, -48, -48, -48, -48, -52, -52, -52, -52, -56, 0, -56, 52, -56, 52, -52, 48, -52, 48, -48, 44, -48, 44, -44, 40, -44, 40, -40, 36, -40, 36, -36, 32, -36, 32, -32, 28, -32, 28, -20)
 
 [node name="CauldronTimer" type="Timer" parent="."]
@@ -106,12 +116,55 @@ one_shot = true
 one_shot = true
 
 [node name="Customer" type="Node2D" parent="."]
+script = ExtResource("7_1mxwi")
 
 [node name="CustomerSprite" type="Sprite2D" parent="Customer"]
 z_index = -1
-position = Vector2(-344, 67)
+position = Vector2(-169, -1.42109e-14)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("7_0j6wh")
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(-205, 34)
+scale = Vector2(4.27852, 4.27852)
+texture = ExtResource("8_aun83")
+metadata/_edit_lock_ = true
+
+[node name="CustomerBox" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -352.0
+offset_top = -261.0
+offset_right = -13.0
+offset_bottom = -154.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CustomerPotionArea" type="Area2D" parent="CustomerBox"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CustomerBox/CustomerPotionArea"]
+visible = false
+position = Vector2(4.25, 78.75)
+shape = SubResource("RectangleShape2D_lama4")
+
+[node name="CustomerBoxSprite" type="Sprite2D" parent="CustomerBox"]
+position = Vector2(-87, -2)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("8_08f7r")
+centered = false
+
+[node name="PotionSprite" type="Sprite2D" parent="CustomerBox"]
+position = Vector2(-7, 78)
 scale = Vector2(4, 4)
-texture = ExtResource("7_uh2kf")
+texture = ExtResource("11_hfqn5")
+
+[node name="OrderLabel" type="Label" parent="CustomerBox"]
+layout_mode = 0
+offset_left = 93.0
+offset_top = 46.0
+offset_right = 389.0
+offset_bottom = 118.0
+text = "give me potion"
 
 [connection signal="body_entered" from="hud/PanelArea" to="." method="_on_panel_area_body_entered"]
 [connection signal="body_entered" from="Cauldron/CauldronArea" to="." method="_on_cauldron_area_body_entered"]
@@ -124,3 +177,4 @@ texture = ExtResource("7_uh2kf")
 [connection signal="body_exited" from="Mortar/MortarArea" to="." method="_on_mortar_area_body_exited"]
 [connection signal="timeout" from="CauldronTimer" to="." method="_on_cauldron_timer_timeout"]
 [connection signal="timeout" from="MortarTimer" to="." method="_on_mortar_timer_timeout"]
+[connection signal="body_entered" from="CustomerBox/CustomerPotionArea" to="." method="_on_customer_potion_area_body_entered"]

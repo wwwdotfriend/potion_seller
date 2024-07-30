@@ -7,11 +7,6 @@ func _ready():
 	Dialogic.start("ellastart")
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func DialogicSignal(argument: String):
 	if argument == "its a signal":
 		print("A signal was fired by Dialogic!")
