@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cl4vsiund7gws"]
 
 [ext_resource type="PackedScene" uid="uid://cu1bjwcl2dm4m" path="res://scenes/inventory.tscn" id="2_566x2"]
-[ext_resource type="Texture2D" uid="uid://fq7e0ds5n1wp" path="res://assets/art/hud/hud_placeholder4.png" id="2_qx6cr"]
+[ext_resource type="Texture2D" uid="uid://d2k7he8gt8pnh" path="res://assets/art/hud/hud_placeholder5.png" id="2_rxo2h"]
 [ext_resource type="Script" path="res://scripts/inventory.gd" id="2_w38ve"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_blb3d"]
@@ -28,7 +28,7 @@ grow_vertical = 2
 script = ExtResource("2_w38ve")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_qx6cr")
+texture = ExtResource("2_rxo2h")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 7
@@ -51,10 +51,10 @@ position = Vector2(4, 324)
 shape = SubResource("RectangleShape2D_mcbku")
 
 [node name="Inventory" parent="." instance=ExtResource("2_566x2")]
-offset_left = 248.0
-offset_top = -132.0
-offset_right = 440.0
-offset_bottom = -4.00002
+offset_left = 243.0
+offset_top = -113.0
+offset_right = 435.0
+offset_bottom = 15.0
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 visible = false

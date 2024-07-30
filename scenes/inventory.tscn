@@ -19,24 +19,24 @@ layout_mode = 0
 
 [node name="InvSlot2" parent="." instance=ExtResource("3_s7dff")]
 layout_mode = 0
-offset_left = 64.0
-offset_right = 128.0
+offset_left = 66.8571
+offset_right = 130.857
 
 [node name="InvSlot3" parent="." instance=ExtResource("3_s7dff")]
 layout_mode = 0
-offset_left = 128.0
-offset_right = 192.0
+offset_left = 133.714
+offset_right = 197.714
 
 [node name="InvSlot4" parent="." instance=ExtResource("3_s7dff")]
 layout_mode = 0
 offset_left = 33.1429
-offset_top = 64.0
+offset_top = 66.2857
 offset_right = 97.1429
-offset_bottom = 128.0
+offset_bottom = 130.286
 
 [node name="InvSlot5" parent="." instance=ExtResource("3_s7dff")]
 layout_mode = 0
-offset_left = 97.1429
-offset_top = 64.0
-offset_right = 161.143
-offset_bottom = 128.0
+offset_left = 100.0
+offset_top = 66.2857
+offset_right = 164.0
+offset_bottom = 130.286
