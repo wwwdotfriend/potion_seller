@@ -9,6 +9,7 @@
 script = ExtResource("2_ifowe")
 name = "Potion of Healing"
 sprite = ExtResource("3_a8hm7")
+scene_path = "res://scenes/potions/potion_of_health.tscn"
 recipe = Array[ExtResource("1_5bqtw")]([ExtResource("2_05g6g"), ExtResource("2_05g6g")])
 base_value = 0
 description = ""

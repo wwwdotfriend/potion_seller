@@ -2,6 +2,7 @@ extends Node2D
 
 var held_object = null
 var current_ingredient: IngredientItem = null
+var potion: Potion = null
 
 var pestle_in_mortar = true
 var spoon_in_cauldron = true
@@ -13,6 +14,8 @@ var mortar_full = false
 var cauldron_full = false
 
 var can_brew = false
+
+var current_potion = ""
 
 @onready var sprite = $Mortar/IngredientMortarSprite
 @onready var mortar_timer = $MortarTimer
@@ -27,7 +30,8 @@ var potion_recipes := {
 	"Potion of Healing": {
 		"name": "Potion of Healing",
 		"recipe": {"bloodroot": 2},
-		"base_value": 10
+		"base_value": 10,
+		"scene_path": "res://scenes/potions/potion_of_health.tscn"
 	},
 	"Potion of Mana": {
 		"name": "Potion of Mana",
@@ -56,18 +60,46 @@ func grind_time():
 		last_pestle_position = pestle.global_position
 	elif not mortar_timer.is_stopped():
 		mortar_timer.stop
-		print("mortar timer done")
 		
 func cauldron_time():
-	if can_brew and spoon_in_cauldron and held_object and cauldron_full:
+	if can_brew and spoon_in_cauldron and held_object and held_object.is_in_group("spoon"):
 		if held_object.global_position != last_spoon_position:
 			if cauldron_timer.is_stopped():
 				cauldron_timer.start()
 				print("cauldron timer started")
-		last_spoon_position = spoon.global_position
+		last_spoon_position = held_object.global_position
 	elif not cauldron_timer.is_stopped():
 		cauldron_timer.stop
 		print("cauldron timer stopped")
+
+func add_to_cauldron(ingredient_name: String) -> void:
+	if ingredient_name in cauldron_ingredients:
+		cauldron_ingredients[current_ingredient.name] += 1
+	else:
+		cauldron_ingredients[current_ingredient.name] = 1
+	print("Added to cauldron:", current_ingredient.name)
+	print("Current cauldron contents:", cauldron_ingredients)
+
+func check_potion_recipe() -> void:
+	can_brew = false
+	current_potion = ""
+	for potion_name in potion_recipes:
+		var recipe = potion_recipes[potion_name]["recipe"]
+		var recipe_match = true
+		for ingredient in recipe:
+			if cauldron_ingredients.get(ingredient, 0) != recipe[ingredient]:
+				recipe_match = false
+				break
+		if recipe_match:
+			for ingredient in cauldron_ingredients:
+				if ingredient not in recipe:
+					recipe_match = false
+					break
+		if recipe_match:
+			can_brew = true
+			current_potion = potion_name
+			print("can brew: ", potion_name)
+			return
 
 func slot_clicked(item: IngredientItem) -> void:
 	var scene = load(item.raw_scene_path)
@@ -90,6 +122,22 @@ func mortar_clicked(item: IngredientItem) -> void:
 	_on_pickable_clicked(scene_instance)
 	call_deferred("_check_for_drop")
 	
+func cauldron_clicked() -> void:
+	if current_potion != "":
+		var potion_data = potion_recipes[current_potion]
+		var potion_scene = load(potion_data["scene_path"])
+		if potion_scene:
+			var scene_instance = potion_scene.instantiate()
+			scene_instance.global_position = get_global_mouse_position()
+			add_child(scene_instance)
+			scene_instance.clicked.connect(_on_pickable_clicked)
+			_on_pickable_clicked(scene_instance)
+			
+			current_potion = ""
+			cauldron_ingredients.clear()
+			can_brew = false
+			$Cauldron/IngredientCauldronSprite.texture = null
+
 func _on_pickable_clicked(object):
 	if !held_object:
 		object.pickup()
@@ -141,6 +189,13 @@ func _on_ing_area_input_event(viewport: Node, event: InputEvent, shape_idx: int)
 				$Mortar/IngredientMortarSprite.texture = null
 		mortar_full = false
 
+func _on_cauldron_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if !can_brew and current_potion != "" and !held_object:
+			print("cauldron clicked")
+			cauldron_clicked()
+			$Mortar/IngredientMortarSprite.texture = null
+
 func _on_mortar_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("pestle"):
 		pestle_in_mortar = true
@@ -179,29 +234,9 @@ func _on_cauldron_inside_body_entered(body: Node2D) -> void:
 				body.queue_free()
 				check_potion_recipe()
 
-func add_to_cauldron(ingredient_name: String) -> void:
-	if ingredient_name in cauldron_ingredients:
-		cauldron_ingredients[current_ingredient.name] += 1
-	else:
-		cauldron_ingredients[current_ingredient.name] = 1
-	print("Added to cauldron:", current_ingredient.name)
-	print("Current cauldron contents:", cauldron_ingredients)
-
-func check_potion_recipe() -> void:
-	for potion_name in potion_recipes:
-		var recipe = potion_recipes[potion_name]["recipe"]
-		var can_brew = true
-		for ingredient in recipe:
-			if cauldron_ingredients.get(ingredient, 0) != recipe[ingredient]:
-				can_brew = false
-				break
-		if can_brew:
-			for ingredient in cauldron_ingredients:
-				if ingredient not in recipe:
-					can_brew = false
-					break
-		if can_brew:
-			print("can brew: ", potion_name)
-
 func _on_cauldron_timer_timeout() -> void:
-	pass # Replace with function body.
+	if can_brew and current_potion != "":
+		print("Brewed: ", current_potion)
+		can_brew = false
+	else:
+		print("Stirring complete, but no potion was brewed.")
