@@ -1,0 +1,26 @@
+[background arg="res://assets/art/POTIONBG1-export.png" fade="0.0"]
+[music path="res://assets/sound/16Bit Fantasy RPG  Town Music 2.mp3" fade="0.0" volume="0.0"]
+join character center
+character: Hey.. um..
+character: Yeah sooo..
+join potionCharacter right [animation="Fade In Down"]
+character: This potion you gave me kinda sucks a**.
+character: I thought I told not to mix certain ingredients like that.
+leave potionCharacter [animation="Fade In Down"]
+character: Anyways, if you still want to learn under me you can't keep messing up like this.
+leave character
+join characternotfocus left
+character: Do you even know what you got wrong?
+join apprenticemaintalk center
+apprenticemaintalk: Ermmm..
+apprenticemaintalk: Noo?
+leave apprenticemaintalk
+- Why are you so dumb?
+	join pinkgirlsad center
+	pinkgirlsad: Hey!! I'm not dumb!!!
+	pinkgirlsad: Why are you so mean? T^T
+- Let me show you how you're SUPPOSED to do it.
+	join pinkgirlsad center
+	pinkgirlsad: Hey! I know what I'm doing.. I think..
+[signal arg="its a signal"]
+[end_timeline]
