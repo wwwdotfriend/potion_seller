@@ -36,7 +36,8 @@ var potion_recipes := {
 	"Potion of Mana": {
 		"name": "Potion of Mana",
 		"recipe": {"bloodroot": 1, "moonberry": 1},
-		"base_value": 15
+		"base_value": 15,
+		"scene_path": ""
 	}
 }
 ##### POTION RECIPES END #####
