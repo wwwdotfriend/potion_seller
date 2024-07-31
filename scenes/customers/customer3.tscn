@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://crg1j2erqe47b"]
+
+[ext_resource type="Texture2D" uid="uid://cqt4ugdk1dd1u" path="res://assets/art/characters/Customer_3.png" id="1_dxtdu"]
+
+[node name="Customer3" type="Node2D" groups=["customer"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+scale = Vector2(2.25, 2.25)
+texture = ExtResource("1_dxtdu")

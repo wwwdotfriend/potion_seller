@@ -79,6 +79,7 @@ pickable=""
 ingredient=""
 tool=""
 potion=""
+customer=""
 
 [input]
 

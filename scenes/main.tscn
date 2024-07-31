@@ -1,16 +1,30 @@
-[gd_scene load_steps=15 format=3 uid="uid://7ee55h58ulca"]
+[gd_scene load_steps=34 format=3 uid="uid://7ee55h58ulca"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_tko5n"]
+[ext_resource type="Texture2D" uid="uid://bk3ovn4jn4s8j" path="res://assets/art/hud/WallBG.png" id="2_4rbgt"]
 [ext_resource type="PackedScene" uid="uid://cl4vsiund7gws" path="res://scenes/hud.tscn" id="2_455rb"]
+[ext_resource type="Texture2D" uid="uid://bftskg3acicru" path="res://assets/art/hud/Counter.png" id="3_7xtv2"]
 [ext_resource type="PackedScene" uid="uid://c4uqiq2mtyhk2" path="res://scenes/pestle.tscn" id="4_heto1"]
 [ext_resource type="PackedScene" uid="uid://b8u2sw1r0s78l" path="res://scenes/cauldron.tscn" id="5_babjq"]
 [ext_resource type="PackedScene" uid="uid://bitap1diibfci" path="res://scenes/mortar.tscn" id="5_o7byh"]
 [ext_resource type="PackedScene" uid="uid://d2bkqxuhp6he5" path="res://scenes/spoon.tscn" id="6_5e0ct"]
-[ext_resource type="Texture2D" uid="uid://b0afjb58ed5fk" path="res://assets/art/characters/potionseller.png" id="7_0j6wh"]
-[ext_resource type="Script" path="res://scenes/customer.gd" id="7_1mxwi"]
 [ext_resource type="Texture2D" uid="uid://djv33dv1775eu" path="res://assets/art/hud/PanelDialogueBox.png" id="8_08f7r"]
-[ext_resource type="Texture2D" uid="uid://ccovj7g1gth51" path="res://assets/art/POTIONBG1-export.png" id="8_aun83"]
 [ext_resource type="Texture2D" uid="uid://co3rbqt525twy" path="res://assets/art/potions/EmptyBottle.png" id="11_hfqn5"]
+[ext_resource type="Texture2D" uid="uid://beb2c3lk5lvko" path="res://assets/art/GoldCoin.png" id="11_o4id7"]
+[ext_resource type="FontFile" uid="uid://q85kupmqqr71" path="res://assets/fonts/DungeonFont.ttf" id="11_oqnn2"]
+[ext_resource type="PackedScene" uid="uid://bjvncor4efng7" path="res://scenes/recipe_menu.tscn" id="12_ymvvb"]
+[ext_resource type="Texture2D" uid="uid://djj23pmfygq1x" path="res://assets/art/hud/Page_Corner_Recipe.png" id="14_s8wcm"]
+[ext_resource type="Texture2D" uid="uid://bcgtclg1powru" path="res://assets/art/hud/Page_Corner_Highlight.png" id="15_vjgu6"]
+[ext_resource type="Texture2D" uid="uid://cd6d7tw4lmonc" path="res://assets/art/characters/potiongerl_Blink_Corner.png" id="16_o7nox"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_baq12"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1n7nx"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wi5ww"]
+texture = ExtResource("15_vjgu6")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7bp8h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vjnww"]
 size = Vector2(412, 720)
@@ -21,8 +35,97 @@ size = Vector2(817, 624.625)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lama4"]
 size = Vector2(137.5, 138.5)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3kcy1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5s3u7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nhdxe"]
+font = ExtResource("11_oqnn2")
+font_size = 64
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gw5rq"]
+atlas = ExtResource("16_o7nox")
+region = Rect2(0, 0, 118, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4v8df"]
+atlas = ExtResource("16_o7nox")
+region = Rect2(118, 0, 118, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lm8ad"]
+atlas = ExtResource("16_o7nox")
+region = Rect2(236, 0, 118, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53426"]
+atlas = ExtResource("16_o7nox")
+region = Rect2(354, 0, 118, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ku4gn"]
+atlas = ExtResource("16_o7nox")
+region = Rect2(472, 0, 118, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8uc8p"]
+atlas = ExtResource("16_o7nox")
+region = Rect2(590, 0, 118, 93)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b13m2"]
+animations = [{
+"frames": [{
+"duration": 20.0,
+"texture": SubResource("AtlasTexture_gw5rq")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_4v8df")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_lm8ad")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_53426")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_ku4gn")
+}, {
+"duration": 0.7,
+"texture": SubResource("AtlasTexture_8uc8p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_tko5n")
+
+[node name="BackgroundSprite" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(-191.5, 53.25)
+scale = Vector2(4.14646, 4.82886)
+texture = ExtResource("2_4rbgt")
+
+[node name="RecipeMenuButton" type="Button" parent="."]
+offset_left = -598.0
+offset_top = -329.0
+offset_right = -446.0
+offset_bottom = -242.0
+theme_override_icons/icon = ExtResource("14_s8wcm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_baq12")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_1n7nx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_1n7nx")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_1n7nx")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_wi5ww")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_1n7nx")
+theme_override_styles/hover = SubResource("StyleBoxTexture_wi5ww")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_1n7nx")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_7bp8h")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_1n7nx")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1n7nx")
+icon_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="CounterSprite" type="Sprite2D" parent="."]
+position = Vector2(-193, 12.25)
+scale = Vector2(4.13131, 4.12416)
+texture = ExtResource("3_7xtv2")
 
 [node name="hud" parent="." instance=ExtResource("2_455rb")]
 
@@ -52,8 +155,7 @@ collision_mask = 4
 position = Vector2(109, 215)
 
 [node name="Cauldron" parent="." instance=ExtResource("5_babjq")]
-z_index = 1
-position = Vector2(-471, 251)
+position = Vector2(-480, 260)
 scale = Vector2(1.25, 1.25)
 collision_layer = 5
 collision_mask = 5
@@ -115,23 +217,10 @@ one_shot = true
 [node name="MortarTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="Customer" type="Node2D" parent="."]
-script = ExtResource("7_1mxwi")
-
-[node name="CustomerSprite" type="Sprite2D" parent="Customer"]
-z_index = -1
-position = Vector2(-169, -1.42109e-14)
-scale = Vector2(2.5, 2.5)
-texture = ExtResource("7_0j6wh")
-
-[node name="Background" type="Sprite2D" parent="."]
-z_index = -2
-position = Vector2(-205, 34)
-scale = Vector2(4.27852, 4.27852)
-texture = ExtResource("8_aun83")
-metadata/_edit_lock_ = true
+[node name="Customers" type="Node2D" parent="."]
 
 [node name="CustomerBox" type="Control" parent="."]
+z_index = -1
 layout_mode = 3
 anchors_preset = 0
 offset_left = -352.0
@@ -160,12 +249,104 @@ texture = ExtResource("11_hfqn5")
 
 [node name="OrderLabel" type="Label" parent="CustomerBox"]
 layout_mode = 0
-offset_left = 93.0
-offset_top = 46.0
-offset_right = 389.0
-offset_bottom = 118.0
-text = "give me potion"
+offset_left = 83.0
+offset_top = 12.0
+offset_right = 406.0
+offset_bottom = 145.0
+theme_override_fonts/font = ExtResource("11_oqnn2")
+theme_override_font_sizes/font_size = 32
+autowrap_mode = 3
 
+[node name="SellConfirmation" type="Control" parent="CustomerBox"]
+visible = false
+custom_minimum_size = Vector2(342, 149)
+anchors_preset = 0
+offset_left = 74.0
+offset_top = 4.0
+offset_right = 416.0
+offset_bottom = 153.0
+
+[node name="SellLabel" type="Label" parent="CustomerBox/SellConfirmation"]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 16.0
+offset_right = 264.0
+offset_bottom = 49.0
+theme_override_fonts/font = ExtResource("11_oqnn2")
+theme_override_font_sizes/font_size = 32
+text = "Sell this potion?"
+
+[node name="SellYes" type="Button" parent="CustomerBox/SellConfirmation"]
+layout_mode = 0
+offset_left = 85.0
+offset_top = 75.0
+offset_right = 119.0
+offset_bottom = 106.0
+theme_override_fonts/font = ExtResource("11_oqnn2")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3kcy1")
+text = "yes"
+
+[node name="SellNo" type="Button" parent="CustomerBox/SellConfirmation"]
+layout_mode = 0
+offset_left = 217.0
+offset_top = 75.0
+offset_right = 245.0
+offset_bottom = 106.0
+theme_override_fonts/font = ExtResource("11_oqnn2")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5s3u7")
+text = "no"
+
+[node name="GoldPieces" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 355.0
+offset_top = 223.0
+offset_right = 488.0
+offset_bottom = 270.0
+
+[node name="GoldLabel" type="Label" parent="GoldPieces"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = -5.0
+offset_right = 134.0
+offset_bottom = 60.0
+label_settings = SubResource("LabelSettings_nhdxe")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GPSprite" type="Sprite2D" parent="GoldPieces"]
+position = Vector2(18, 25)
+scale = Vector2(2, 2)
+texture = ExtResource("11_o4id7")
+
+[node name="RecipeMenu" parent="." instance=ExtResource("12_ymvvb")]
+visible = false
+z_index = -1
+offset_left = -471.0
+offset_top = -311.0
+offset_right = -471.0
+offset_bottom = -311.0
+scale = Vector2(0.8, 0.8)
+
+[node name="DayLabel" type="Label" parent="."]
+offset_left = 437.0
+offset_top = -259.0
+offset_right = 571.0
+offset_bottom = -194.0
+theme_override_fonts/font = ExtResource("11_oqnn2")
+theme_override_font_sizes/font_size = 64
+text = "Day 1"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(325, -230)
+scale = Vector2(1.63441, 1.63441)
+sprite_frames = SubResource("SpriteFrames_b13m2")
+autoplay = "default"
+frame_progress = 0.628811
+
+[connection signal="pressed" from="RecipeMenuButton" to="." method="_on_recipe_menu_button_pressed"]
 [connection signal="body_entered" from="hud/PanelArea" to="." method="_on_panel_area_body_entered"]
 [connection signal="body_entered" from="Cauldron/CauldronArea" to="." method="_on_cauldron_area_body_entered"]
 [connection signal="body_exited" from="Cauldron/CauldronArea" to="." method="_on_cauldron_area_body_exited"]
@@ -177,4 +358,7 @@ text = "give me potion"
 [connection signal="body_exited" from="Mortar/MortarArea" to="." method="_on_mortar_area_body_exited"]
 [connection signal="timeout" from="CauldronTimer" to="." method="_on_cauldron_timer_timeout"]
 [connection signal="timeout" from="MortarTimer" to="." method="_on_mortar_timer_timeout"]
+[connection signal="gui_input" from="CustomerBox" to="." method="_on_customer_box_gui_input"]
 [connection signal="body_entered" from="CustomerBox/CustomerPotionArea" to="." method="_on_customer_potion_area_body_entered"]
+[connection signal="pressed" from="CustomerBox/SellConfirmation/SellYes" to="." method="_on_sell_yes_pressed"]
+[connection signal="pressed" from="CustomerBox/SellConfirmation/SellNo" to="." method="_on_sell_no_pressed"]

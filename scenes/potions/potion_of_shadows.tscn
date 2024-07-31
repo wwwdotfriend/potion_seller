@@ -1,15 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2260ngbo6q6h"]
+[gd_scene load_steps=3 format=3 uid="uid://sjbpqt4tblqu"]
 
-[ext_resource type="Texture2D" uid="uid://nu0vq5ns2sdw" path="res://assets/art/potions/Potion_of_Healing.png" id="1_1ee71"]
-[ext_resource type="Script" path="res://potion.gd" id="1_r2a13"]
+[ext_resource type="Script" path="res://potion.gd" id="1_ivpxt"]
+[ext_resource type="Texture2D" uid="uid://se1po33a5i6a" path="res://assets/art/potions/PotionofShadows.png" id="2_5ti28"]
 
-[node name="PotionOfHealth" type="RigidBody2D" groups=["pickable", "potion"]]
+[node name="PotionOfShadows" type="RigidBody2D" groups=["pickable", "potion"]]
 input_pickable = true
-script = ExtResource("1_r2a13")
+script = ExtResource("1_ivpxt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(4, 4)
-texture = ExtResource("1_1ee71")
+texture = ExtResource("2_5ti28")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 visible = false

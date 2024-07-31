@@ -8,35 +8,36 @@
 custom_minimum_size = Vector2(192, 128)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 192.0
-offset_bottom = 128.0
+offset_right = 251.0
+offset_bottom = 234.0
 scale = Vector2(1.75, 1.75)
 script = ExtResource("1_pv44a")
 inv = ExtResource("2_1tr4m")
 
 [node name="InvSlot" parent="." instance=ExtResource("3_s7dff")]
 layout_mode = 0
+offset_left = 3.05176e-05
 
 [node name="InvSlot2" parent="." instance=ExtResource("3_s7dff")]
 layout_mode = 0
-offset_left = 66.8571
-offset_right = 130.857
+offset_left = 92.5714
+offset_right = 156.571
 
 [node name="InvSlot3" parent="." instance=ExtResource("3_s7dff")]
 layout_mode = 0
-offset_left = 133.714
-offset_right = 197.714
+offset_left = 186.857
+offset_right = 250.857
 
 [node name="InvSlot4" parent="." instance=ExtResource("3_s7dff")]
 layout_mode = 0
-offset_left = 33.1429
-offset_top = 66.2857
-offset_right = 97.1429
-offset_bottom = 130.286
+offset_left = 28.5714
+offset_top = 170.286
+offset_right = 92.5714
+offset_bottom = 234.286
 
 [node name="InvSlot5" parent="." instance=ExtResource("3_s7dff")]
 layout_mode = 0
-offset_left = 100.0
-offset_top = 66.2857
-offset_right = 164.0
-offset_bottom = 130.286
+offset_left = 145.143
+offset_top = 170.286
+offset_right = 209.143
+offset_bottom = 234.286
