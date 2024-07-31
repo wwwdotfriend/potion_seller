@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="potion seller"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="res://scripts/menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -26,7 +26,8 @@ directories/dch_directory={
 "pinky_main": "res://assets/art/pinky_main.dch",
 "potionCharacter": "res://assets/art/potionCharacter.dch",
 "potion_seller": "res://assets/art/potion_seller.dch",
-"potion_seller_small": "res://assets/art/potion_seller_small.dch"
+"potion_seller_small": "res://assets/art/potion_seller_small.dch",
+"potionsellerchocked": "res://assets/art/potionsellerchocked.dch"
 }
 directories/dtl_directory={
 "ellastart": "res://assets/art/ellastart.dtl"
