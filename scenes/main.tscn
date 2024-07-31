@@ -147,14 +147,17 @@ shape = SubResource("RectangleShape2D_qwiuo")
 process_callback = 0
 
 [node name="spoon" parent="." groups=["spoon"] instance=ExtResource("6_5e0ct")]
+z_index = 1
 position = Vector2(-471, 111)
 collision_layer = 4
 collision_mask = 4
 
 [node name="pestle" parent="." groups=["pestle"] instance=ExtResource("4_heto1")]
+z_index = 1
 position = Vector2(109, 215)
 
 [node name="Cauldron" parent="." instance=ExtResource("5_babjq")]
+z_index = 2
 position = Vector2(-480, 260)
 scale = Vector2(1.25, 1.25)
 collision_layer = 5
@@ -181,6 +184,7 @@ position = Vector2(0, -161.6)
 scale = Vector2(3, 3)
 
 [node name="Mortar" parent="." instance=ExtResource("5_o7byh")]
+z_index = 2
 position = Vector2(111, 254)
 
 [node name="MortarInside" type="Area2D" parent="Mortar"]
@@ -323,7 +327,6 @@ texture = ExtResource("11_o4id7")
 
 [node name="RecipeMenu" parent="." instance=ExtResource("12_ymvvb")]
 visible = false
-z_index = -1
 offset_left = -471.0
 offset_top = -311.0
 offset_right = -471.0

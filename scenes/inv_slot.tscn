@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d20urnxtobqsg"]
+[gd_scene load_steps=3 format=3 uid="uid://d20urnxtobqsg"]
 
 [ext_resource type="Script" path="res://scripts/inv_slot.gd" id="1_rbovk"]
+[ext_resource type="FontFile" uid="uid://q85kupmqqr71" path="res://assets/fonts/DungeonFont.ttf" id="2_c5v2q"]
 
 [node name="InvSlot" type="Panel" groups=["inv_slot"]]
 self_modulate = Color(1, 1, 1, 0)
@@ -12,5 +13,16 @@ script = ExtResource("1_rbovk")
 [node name="item_display" type="Sprite2D" parent="."]
 scale = Vector2(4, 4)
 centered = false
+
+[node name="IngredientAmount" type="Label" parent="."]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 36.0
+offset_right = 61.0
+offset_bottom = 69.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_c5v2q")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 2
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

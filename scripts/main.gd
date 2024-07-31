@@ -166,16 +166,22 @@ func _process(delta: float) -> void:
 	check_for_scripted_events()
 
 func slot_clicked(item: IngredientItem) -> void:
-	var scene = load(item.raw_scene_path)
-	var scene_instance = scene.instantiate()
-	scene_instance.set_ingredient_item(item)
-	item.state = IngredientItem.State.RAW
-	scene_instance.global_position = get_global_mouse_position()
-	add_child(scene_instance)
-	scene_instance.clicked.connect(_on_pickable_clicked)
-	_on_pickable_clicked(scene_instance)
-	call_deferred("_check_for_drop")
+	if item.quantity > 0:
+		var scene = load(item.raw_scene_path)
+		var scene_instance = scene.instantiate()
+		scene_instance.set_ingredient_item(item)
+		item.state = IngredientItem.State.RAW
+		scene_instance.global_position = get_global_mouse_position()
+		add_child(scene_instance)
+		scene_instance.clicked.connect(_on_pickable_clicked)
+		_on_pickable_clicked(scene_instance)
+		call_deferred("_check_for_drop")
 
+		item.quantity -= 1
+		$hud.update_slots()
+	else:
+		print("cannot spawn")
+	
 func _on_pickable_clicked(object):
 	if !held_object:
 		object.pickup()
@@ -432,9 +438,28 @@ func display_current_order() -> void:
 func next_order() -> void:
 	current_order_index += 1
 	customers_served += 1
+
+	# Move customers
+	if not current_customers.is_empty():
+		var tween = create_tween()
+
+		# Move the first customer off-screen
+		var first_customer = current_customers[0]
+		tween.tween_property(first_customer, "position", customer_offscreen_right, 0.5)
+		tween.tween_callback(first_customer.queue_free)
+
+		# Move the remaining customers
+		for i in range(1, current_customers.size()):
+			var customer = current_customers[i]
+			var target_position = customer_order_position + customer_spacing * (i - 1)
+			tween.parallel().tween_property(customer, "position", target_position, 0.5)
+
+		# Remove the first customer from the array
+		current_customers.pop_front()
+
 	if customers_served >= customers_per_day:
 		end_day()
-	else:	
+	else:    
 		display_current_order()
 	wrong_order = false
 
@@ -470,7 +495,7 @@ func _on_sell_yes_pressed() -> void:
 	else:
 		sell_confirmation.hide()
 		order_label.show()
-		order_label.text = "This isn't what I wanted..."
+		order_label.text = "This isn't what I wanted... (click to continue)"
 		wrong_order = true
 
 	potion_sprite.texture = load("res://assets/art/potions/EmptyBottle.png")
