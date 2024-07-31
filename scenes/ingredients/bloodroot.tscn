@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://diqttwmufvbjg" path="res://assets/art/ingredients/Bloodroot.png" id="2_g7lub"]
 
 [node name="bloodroot" type="RigidBody2D" groups=["ingredient", "pickable"]]
+z_index = 2
 input_pickable = true
 script = ExtResource("1_4uvfr")
 

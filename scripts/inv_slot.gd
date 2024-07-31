@@ -10,12 +10,12 @@ func update(item: IngredientItem) -> void:
 	current_item = item
 	if !item:
 		item_visual.visible = false
-		quantity_label.visible = false
+		# quantity_label.visible = false
 	else:
 		item_visual.visible = true
 		item_visual.texture = item.texture
-		quantity_label.visible = true
-		quantity_label.text = str(item.quantity)
+		# quantity_label.visible = true
+		# quantity_label.text = str(item.quantity)
 
 func _on_gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("M1"):

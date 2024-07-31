@@ -7,6 +7,8 @@ const GRAVITY = 900
 const FOLLOW_SPEED = 80.0  # Adjust this value to change how quickly it follows the cursor
 
 var grab_offset = Vector2.ZERO
+@onready var hit_sound = $HitSounds
+var sound_played = false
 
 func _physics_process(delta: float) -> void:
 	if held:
@@ -18,11 +20,17 @@ func _physics_process(delta: float) -> void:
 		
 		var collision = move_and_collide(velocity * delta)
 		if collision:
+			if not sound_played:
+				$HitSounds.play()
+				sound_played = true
 			var slide_vector = collision.get_remainder().slide(collision.get_normal())
 			move_and_collide(slide_vector)
+		else:
+			sound_played = false
 	else:
 		velocity.y += GRAVITY * delta
 		move_and_slide()
+		sound_played = false
 
 func pickup():
 	if held:

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dwui7kp72t81t" path="res://assets/art/ingredients/Suns_Grace_Crocus.png" id="2_yxa25"]
 
 [node name="suns_grace" type="RigidBody2D" groups=["ingredient", "pickable"]]
+z_index = 2
 input_pickable = true
 script = ExtResource("1_4qak4")
 

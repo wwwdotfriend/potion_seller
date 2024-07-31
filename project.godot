@@ -10,14 +10,11 @@ config_version=5
 
 [application]
 
-config/name="potion seller"
+config/name="Potion Seller"
 run/main_scene="res://scripts/menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-config/icon="res://icon.svg"
-
-[autoload]
-
-Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+boot_splash/image="res://pride-dark-c.png"
+config/icon="res://assets/art/potiongerl-shocked.png"
 
 [dialogic]
 
@@ -60,10 +57,7 @@ variables={}
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
+window/stretch/mode="viewport"
 
 [file_customization]
 

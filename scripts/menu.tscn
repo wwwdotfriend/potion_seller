@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dinj0u2kudfqv"]
+[gd_scene load_steps=6 format=3 uid="uid://dinj0u2kudfqv"]
 
-[ext_resource type="FontFile" uid="uid://opfpq3h3wq5x" path="res://assets/DungeonFont.ttf" id="1_bu4io"]
 [ext_resource type="Script" path="res://menu.gd" id="1_c5cw8"]
-[ext_resource type="FontFile" uid="uid://bojvvowjwngf6" path="res://assets/art/DungeonFont.ttf" id="2_u068l"]
-[ext_resource type="Texture2D" uid="uid://bn1bb4ckjhlwp" path="res://assets/art/Title Menu.png" id="2_xss6w"]
+[ext_resource type="Texture2D" uid="uid://degomrt2j6gfy" path="res://assets/art/hud/Title2.png" id="2_0eup7"]
+[ext_resource type="FontFile" uid="uid://plrn3c07hcx4" path="res://assets/fonts/Abaddon Bold.ttf" id="4_jsfcu"]
+[ext_resource type="AudioStream" uid="uid://dsrbw8nqpph2f" path="res://assets/audio/Confirm.wav" id="5_m21me"]
+[ext_resource type="AudioStream" uid="uid://dknorgdgtlc5l" path="res://assets/sound/music/adventure_music_1.mp3" id="5_pxw6f"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -13,11 +14,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_c5cw8")
+metadata/_edit_horizontal_guides_ = [391.0]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(641.25, 358.25)
 scale = Vector2(1.00117, 0.99375)
-texture = ExtResource("2_xss6w")
+texture = ExtResource("2_0eup7")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
@@ -29,17 +31,34 @@ offset_bottom = 615.0
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_bu4io")
-theme_override_font_sizes/font_size = 120
-text = "Play"
+[node name="MenuAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_pxw6f")
+volume_db = -12.0
+autoplay = true
 
-[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Play" type="Button" parent="."]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_u068l")
-theme_override_font_sizes/font_size = 110
-text = "Quit"
+offset_left = 156.0
+offset_top = 310.0
+offset_right = 412.0
+offset_bottom = 445.0
+theme_override_fonts/font = ExtResource("4_jsfcu")
+theme_override_font_sizes/font_size = 72
+text = "play"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[node name="Quit" type="Button" parent="."]
+layout_mode = 2
+offset_left = 877.0
+offset_top = 315.0
+offset_right = 1121.0
+offset_bottom = 440.0
+theme_override_fonts/font = ExtResource("4_jsfcu")
+theme_override_font_sizes/font_size = 72
+text = "quit"
+
+[node name="PlayAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_m21me")
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="finished" from="PlayAudio" to="." method="_on_play_audio_finished"]

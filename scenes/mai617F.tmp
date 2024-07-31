@@ -1,0 +1,457 @@
+[gd_scene load_steps=44 format=3 uid="uid://7ee55h58ulca"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_tko5n"]
+[ext_resource type="Texture2D" uid="uid://bk3ovn4jn4s8j" path="res://assets/art/hud/WallBG.png" id="2_4rbgt"]
+[ext_resource type="PackedScene" uid="uid://cl4vsiund7gws" path="res://scenes/hud.tscn" id="2_455rb"]
+[ext_resource type="Texture2D" uid="uid://bftskg3acicru" path="res://assets/art/hud/Counter.png" id="3_7xtv2"]
+[ext_resource type="PackedScene" uid="uid://c4uqiq2mtyhk2" path="res://scenes/pestle.tscn" id="4_heto1"]
+[ext_resource type="PackedScene" uid="uid://b8u2sw1r0s78l" path="res://scenes/cauldron.tscn" id="5_babjq"]
+[ext_resource type="PackedScene" uid="uid://bitap1diibfci" path="res://scenes/mortar.tscn" id="5_o7byh"]
+[ext_resource type="PackedScene" uid="uid://d2bkqxuhp6he5" path="res://scenes/spoon.tscn" id="6_5e0ct"]
+[ext_resource type="Texture2D" uid="uid://djv33dv1775eu" path="res://assets/art/hud/PanelDialogueBox.png" id="8_08f7r"]
+[ext_resource type="Texture2D" uid="uid://c8iu6dg5w3smf" path="res://assets/art/Cauldron_Smoke_Ing._Sheet.png" id="10_kr2im"]
+[ext_resource type="Texture2D" uid="uid://co3rbqt525twy" path="res://assets/art/potions/EmptyBottle.png" id="11_hfqn5"]
+[ext_resource type="Texture2D" uid="uid://beb2c3lk5lvko" path="res://assets/art/GoldCoin.png" id="11_o4id7"]
+[ext_resource type="FontFile" uid="uid://q85kupmqqr71" path="res://assets/fonts/DungeonFont.ttf" id="11_oqnn2"]
+[ext_resource type="PackedScene" uid="uid://bjvncor4efng7" path="res://scenes/recipe_menu.tscn" id="12_ymvvb"]
+[ext_resource type="Texture2D" uid="uid://djj23pmfygq1x" path="res://assets/art/hud/Page_Corner_Recipe.png" id="14_s8wcm"]
+[ext_resource type="Texture2D" uid="uid://bcgtclg1powru" path="res://assets/art/hud/Page_Corner_Highlight.png" id="15_vjgu6"]
+[ext_resource type="Texture2D" uid="uid://cd6d7tw4lmonc" path="res://assets/art/characters/potiongerl_Blink_Corner.png" id="16_o7nox"]
+[ext_resource type="AudioStream" uid="uid://d3pq3k7axgf8k" path="res://assets/sound/music/16Bit Fantasy RPG  Town Music 2.mp3" id="17_7dmk3"]
+[ext_resource type="Texture2D" uid="uid://kw5nmlunu7kp" path="res://assets/art/hud/Basket.png" id="18_3o205"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_baq12"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1n7nx"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wi5ww"]
+texture = ExtResource("15_vjgu6")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7bp8h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vjnww"]
+size = Vector2(412, 720)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qwiuo"]
+size = Vector2(817, 624.625)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0b7d"]
+atlas = ExtResource("10_kr2im")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y44ys"]
+atlas = ExtResource("10_kr2im")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tv26i"]
+atlas = ExtResource("10_kr2im")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byf8g"]
+atlas = ExtResource("10_kr2im")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fk8i7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0b7d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y44ys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tv26i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_byf8g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lama4"]
+size = Vector2(137.5, 138.5)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3kcy1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5s3u7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nhdxe"]
+font = ExtResource("11_oqnn2")
+font_size = 42
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gw5rq"]
+atlas = ExtResource("16_o7nox")
+region = Rect2(0, 0, 118, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4v8df"]
+atlas = ExtResource("16_o7nox")
+region = Rect2(118, 0, 118, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lm8ad"]
+atlas = ExtResource("16_o7nox")
+region = Rect2(236, 0, 118, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53426"]
+atlas = ExtResource("16_o7nox")
+region = Rect2(354, 0, 118, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ku4gn"]
+atlas = ExtResource("16_o7nox")
+region = Rect2(472, 0, 118, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8uc8p"]
+atlas = ExtResource("16_o7nox")
+region = Rect2(590, 0, 118, 93)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b13m2"]
+animations = [{
+"frames": [{
+"duration": 20.0,
+"texture": SubResource("AtlasTexture_gw5rq")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_4v8df")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_lm8ad")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_53426")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_ku4gn")
+}, {
+"duration": 0.7,
+"texture": SubResource("AtlasTexture_8uc8p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4ouvy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e2qa8"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_tko5n")
+
+[node name="BackgroundSprite" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(-191.5, 53.25)
+scale = Vector2(4.14646, 4.82886)
+texture = ExtResource("2_4rbgt")
+
+[node name="RecipeMenuButton" type="Button" parent="."]
+offset_left = -598.0
+offset_top = -329.0
+offset_right = -446.0
+offset_bottom = -242.0
+theme_override_icons/icon = ExtResource("14_s8wcm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_baq12")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_1n7nx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_1n7nx")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_1n7nx")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_wi5ww")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_1n7nx")
+theme_override_styles/hover = SubResource("StyleBoxTexture_wi5ww")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_1n7nx")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_7bp8h")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_1n7nx")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1n7nx")
+icon_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="CounterSprite" type="Sprite2D" parent="."]
+position = Vector2(-193, 12.25)
+scale = Vector2(4.13131, 4.12416)
+texture = ExtResource("3_7xtv2")
+
+[node name="hud" parent="." instance=ExtResource("2_455rb")]
+
+[node name="PanelArea" type="Area2D" parent="hud"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hud/PanelArea"]
+position = Vector2(434, 0)
+shape = SubResource("RectangleShape2D_vjnww")
+
+[node name="CookArea" type="Area2D" parent="hud"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hud/CookArea"]
+position = Vector2(-193, 6.3125)
+shape = SubResource("RectangleShape2D_qwiuo")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_callback = 0
+
+[node name="spoon" parent="." groups=["spoon"] instance=ExtResource("6_5e0ct")]
+z_index = 1
+position = Vector2(-508, 122)
+collision_layer = 4
+collision_mask = 4
+
+[node name="pestle" parent="." groups=["pestle"] instance=ExtResource("4_heto1")]
+z_index = 1
+position = Vector2(109, 215)
+
+[node name="SmokeNodes" type="Node2D" parent="."]
+
+[node name="Smoke1" type="AnimatedSprite2D" parent="SmokeNodes"]
+z_index = 2
+position = Vector2(-530, 38)
+scale = Vector2(3.75, 6.25)
+sprite_frames = SubResource("SpriteFrames_fk8i7")
+frame_progress = 0.571113
+
+[node name="Smoke2" type="AnimatedSprite2D" parent="SmokeNodes"]
+z_index = 2
+position = Vector2(-475, 38)
+scale = Vector2(3.75, 6.25)
+sprite_frames = SubResource("SpriteFrames_fk8i7")
+autoplay = "default"
+frame_progress = 0.175784
+
+[node name="Smoke3" type="AnimatedSprite2D" parent="SmokeNodes"]
+z_index = 2
+position = Vector2(-414, 40)
+scale = Vector2(3.75, 6.25)
+sprite_frames = SubResource("SpriteFrames_fk8i7")
+autoplay = "default"
+frame_progress = 0.216653
+
+[node name="Cauldron" parent="." instance=ExtResource("5_babjq")]
+z_index = 2
+position = Vector2(-480, 260)
+scale = Vector2(1.25, 1.25)
+collision_layer = 5
+collision_mask = 5
+
+[node name="CauldronArea" type="Area2D" parent="Cauldron"]
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cauldron/CauldronArea"]
+visible = false
+polygon = PackedVector2Array(-42.4, -126.4, -36, -126.4, -36, -132, -12, -132, -12, -137.6, -6.39999, -137.6, -6.39999, -144, 6.39999, -144, 6.39999, -137.6, 12, -137.6, 12, -132, 35.2, -132, 35.2, -126.4, 42.4, -126.4, 42.4, -138.4, 53.6, -138.4, 53.6, -131.2, 65.6, -131.2, 65.6, -124.8, 71.2, -124.8, 71.2, -119.2, 77.6, -119.2, 77.6, -113.6, 83.2, -113.6, 83.2, -78.4, 76.8, -78.4, 76.8, -73.6, 71.2, -73.6, 71.2, -66.4, 64.8, -66.4, 64.8, -60.8, 60, -60.8, 60, -54.4, 53.6, -54.4, 53.6, -48, 48, -48, 48, -24, -48, -24, -48, -48.8, -84, -78.4, -84, -114.4, -65.6, -132, -53.6, -132, -53.6, -138.4, -42.4, -138.4)
+
+[node name="CauldronInside" type="Area2D" parent="Cauldron"]
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Cauldron/CauldronInside"]
+visible = false
+polygon = PackedVector2Array(-42.4, -126.4, -36, -126.4, -36, -132, -12, -132, -12, -137.6, -6.39999, -137.6, -6.39999, -144, 6.39999, -144, 6.39999, -137.6, 12, -137.6, 12, -132, 35.2, -132, 35.2, -126.4, 42.4, -126.4, 42.4, -138.4, 53.6, -138.4, 53.6, -131.2, 65.6, -131.2, 65.6, -124.8, 71.2, -124.8, 71.2, -119.2, 77.6, -119.2, 77.6, -113.6, 83.2, -113.6, 83.2, -78.4, 76.8, -78.4, 76.8, -73.6, 71.2, -73.6, 71.2, -66.4, 64.8, -66.4, 64.8, -60.8, 60, -60.8, 60, -54.4, 53.6, -54.4, 53.6, -48, 48, -48, 48, -24, -48, -24, -48, -48.8, -84, -78.4, -84, -114.4, -65.6, -132, -53.6, -132, -53.6, -138.4, -42.4, -138.4)
+
+[node name="IngredientCauldronSprite" type="Sprite2D" parent="Cauldron"]
+position = Vector2(0, -161.6)
+scale = Vector2(3, 3)
+
+[node name="Mortar" parent="." instance=ExtResource("5_o7byh")]
+z_index = 2
+position = Vector2(111, 254)
+
+[node name="MortarInside" type="Area2D" parent="Mortar"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mortar/MortarInside"]
+visible = false
+position = Vector2(-64, -128)
+polygon = PackedVector2Array(4, 44, 4, 68, 12, 74, 31, 100, 36, 108, 92, 108, 97, 100, 116, 74, 124, 68, 124, 44)
+
+[node name="IngredientMortarSprite" type="Sprite2D" parent="Mortar"]
+position = Vector2(-64, -136)
+scale = Vector2(4, 4)
+centered = false
+
+[node name="IngArea" type="Area2D" parent="Mortar/IngredientMortarSprite"]
+position = Vector2(16, 12)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mortar/IngredientMortarSprite/IngArea"]
+visible = false
+polygon = PackedVector2Array(-15, 0, 15, 0, 13, 9, 9, 12.5, -9, 12.5, -13, 9)
+
+[node name="MortarArea" type="Area2D" parent="Mortar"]
+collision_mask = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mortar/MortarArea"]
+visible = false
+polygon = PackedVector2Array(-28, -20, -28, -32, -32, -32, -32, -36, -36, -36, -36, -40, -40, -40, -40, -44, -44, -44, -44, -48, -48, -48, -48, -52, -52, -52, -52, -56, 0, -56, 52, -56, 52, -52, 48, -52, 48, -48, 44, -48, 44, -44, 40, -44, 40, -40, 36, -40, 36, -36, 32, -36, 32, -32, 28, -32, 28, -20)
+
+[node name="CauldronTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="MortarTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Customers" type="Node2D" parent="."]
+
+[node name="CustomerBox" type="Control" parent="."]
+z_index = -1
+layout_mode = 3
+anchors_preset = 0
+offset_left = -352.0
+offset_top = -261.0
+offset_right = -13.0
+offset_bottom = -154.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CustomerPotionArea" type="Area2D" parent="CustomerBox"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CustomerBox/CustomerPotionArea"]
+visible = false
+position = Vector2(4.25, 78.75)
+shape = SubResource("RectangleShape2D_lama4")
+
+[node name="CustomerBoxSprite" type="Sprite2D" parent="CustomerBox"]
+position = Vector2(-87, -2)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("8_08f7r")
+centered = false
+
+[node name="PotionSprite" type="Sprite2D" parent="CustomerBox"]
+position = Vector2(-7, 78)
+scale = Vector2(4, 4)
+texture = ExtResource("11_hfqn5")
+
+[node name="OrderLabel" type="Label" parent="CustomerBox"]
+layout_mode = 0
+offset_left = 83.0
+offset_top = 12.0
+offset_right = 406.0
+offset_bottom = 145.0
+theme_override_fonts/font = ExtResource("11_oqnn2")
+theme_override_font_sizes/font_size = 32
+autowrap_mode = 3
+
+[node name="SellConfirmation" type="Control" parent="CustomerBox"]
+visible = false
+custom_minimum_size = Vector2(342, 149)
+anchors_preset = 0
+offset_left = 74.0
+offset_top = 4.0
+offset_right = 416.0
+offset_bottom = 153.0
+
+[node name="SellLabel" type="Label" parent="CustomerBox/SellConfirmation"]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 16.0
+offset_right = 264.0
+offset_bottom = 49.0
+theme_override_fonts/font = ExtResource("11_oqnn2")
+theme_override_font_sizes/font_size = 32
+text = "Sell this potion?"
+
+[node name="SellYes" type="Button" parent="CustomerBox/SellConfirmation"]
+layout_mode = 0
+offset_left = 85.0
+offset_top = 75.0
+offset_right = 119.0
+offset_bottom = 106.0
+theme_override_fonts/font = ExtResource("11_oqnn2")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3kcy1")
+text = "yes"
+
+[node name="SellNo" type="Button" parent="CustomerBox/SellConfirmation"]
+layout_mode = 0
+offset_left = 217.0
+offset_top = 75.0
+offset_right = 245.0
+offset_bottom = 106.0
+theme_override_fonts/font = ExtResource("11_oqnn2")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5s3u7")
+text = "no"
+
+[node name="GoldPieces" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 272.0
+offset_top = 232.0
+offset_right = 402.0
+offset_bottom = 285.0
+
+[node name="GoldLabel" type="Label" parent="GoldPieces"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 4.0
+offset_right = 119.0
+offset_bottom = 69.0
+label_settings = SubResource("LabelSettings_nhdxe")
+vertical_alignment = 1
+
+[node name="GPSprite" type="Sprite2D" parent="GoldPieces"]
+position = Vector2(10, 35)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("11_o4id7")
+
+[node name="RecipeMenu" parent="." instance=ExtResource("12_ymvvb")]
+offset_left = -471.0
+offset_top = -311.0
+offset_right = -471.0
+offset_bottom = -311.0
+scale = Vector2(0.8, 0.8)
+
+[node name="DayLabel" type="Label" parent="."]
+offset_left = 437.0
+offset_top = -259.0
+offset_right = 571.0
+offset_bottom = -194.0
+theme_override_fonts/font = ExtResource("11_oqnn2")
+theme_override_font_sizes/font_size = 64
+text = "Day 1"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(325, -230)
+scale = Vector2(1.63441, 1.63441)
+sprite_frames = SubResource("SpriteFrames_b13m2")
+autoplay = "default"
+frame_progress = 0.628811
+
+[node name="MainMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_7dmk3")
+volume_db = -8.0
+autoplay = true
+
+[node name="Basket" type="Button" parent="."]
+offset_left = 532.0
+offset_top = 251.0
+offset_right = 561.0
+offset_bottom = 283.0
+scale = Vector2(1.2, 1.2)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4ouvy")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_4ouvy")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_4ouvy")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_4ouvy")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_4ouvy")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_4ouvy")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_4ouvy")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_4ouvy")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_e2qa8")
+icon = ExtResource("18_3o205")
+alignment = 0
+icon_alignment = 2
+
+[connection signal="pressed" from="RecipeMenuButton" to="." method="_on_recipe_menu_button_pressed"]
+[connection signal="body_entered" from="hud/PanelArea" to="." method="_on_panel_area_body_entered"]
+[connection signal="body_entered" from="Cauldron/CauldronArea" to="." method="_on_cauldron_area_body_entered"]
+[connection signal="body_exited" from="Cauldron/CauldronArea" to="." method="_on_cauldron_area_body_exited"]
+[connection signal="input_event" from="Cauldron/CauldronArea" to="." method="_on_cauldron_area_input_event"]
+[connection signal="body_entered" from="Cauldron/CauldronInside" to="." method="_on_cauldron_inside_body_entered"]
+[connection signal="body_entered" from="Mortar/MortarInside" to="." method="_on_mortar_inside_body_entered"]
+[connection signal="input_event" from="Mortar/IngredientMortarSprite/IngArea" to="." method="_on_ing_area_input_event"]
+[connection signal="body_entered" from="Mortar/MortarArea" to="." method="_on_mortar_area_body_entered"]
+[connection signal="body_exited" from="Mortar/MortarArea" to="." method="_on_mortar_area_body_exited"]
+[connection signal="timeout" from="CauldronTimer" to="." method="_on_cauldron_timer_timeout"]
+[connection signal="timeout" from="MortarTimer" to="." method="_on_mortar_timer_timeout"]
+[connection signal="gui_input" from="CustomerBox" to="." method="_on_customer_box_gui_input"]
+[connection signal="body_entered" from="CustomerBox/CustomerPotionArea" to="." method="_on_customer_potion_area_body_entered"]
+[connection signal="pressed" from="CustomerBox/SellConfirmation/SellYes" to="." method="_on_sell_yes_pressed"]
+[connection signal="pressed" from="CustomerBox/SellConfirmation/SellNo" to="." method="_on_sell_no_pressed"]

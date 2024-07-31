@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2bkqxuhp6he5"]
+[gd_scene load_steps=4 format=3 uid="uid://d2bkqxuhp6he5"]
 
 [ext_resource type="Script" path="res://scripts/spoon.gd" id="1_lo7vy"]
 [ext_resource type="Texture2D" uid="uid://b2avc8r8gf5d3" path="res://assets/art/spoon.png" id="1_ph1dh"]
+[ext_resource type="AudioStream" uid="uid://bttoaowuidf32" path="res://assets/audio/Hit damage 1.wav" id="3_xnxbf"]
 
 [node name="spoon" type="CharacterBody2D" groups=["pickable", "tool"]]
 input_pickable = true
@@ -19,5 +20,9 @@ polygon = PackedVector2Array(-2, -32, -2, -31, -3, -31, -3, -30, -4, -30, -4, -2
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
 scale = Vector2(4, 4)
 polygon = PackedVector2Array(-2, 1, -3, 1, -3, 2, -4, 2, -4, 3, -5, 3, -5, 5, -6, 5, -6, 10, -5, 10, -5, 12, -4, 12, -4, 13, -3, 13, -3, 14, 2, 14, 2, 13, 3, 13, 3, 12, 4, 12, 4, 10, 5, 10, 5, 5, 4, 5, 4, 3, 3, 3, 3, 2, 2, 2, 2, 1, 1, 1)
+
+[node name="HitSounds" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_xnxbf")
+volume_db = -6.0
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

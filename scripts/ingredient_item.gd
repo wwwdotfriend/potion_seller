@@ -4,7 +4,9 @@ class_name IngredientItem
 @export var name: String = ""
 @export var display_name: String = ""
 @export var texture: Texture2D
-@export var quantity := 10
+@export var quantity := 99
+
+@export var color_code: String = ""
 
 @export var mortar_sprite: Texture2D
 @export var crushed_sprite: Texture2D

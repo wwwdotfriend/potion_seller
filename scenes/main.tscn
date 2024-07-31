@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://7ee55h58ulca"]
+[gd_scene load_steps=49 format=3 uid="uid://7ee55h58ulca"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_tko5n"]
 [ext_resource type="Texture2D" uid="uid://bk3ovn4jn4s8j" path="res://assets/art/hud/WallBG.png" id="2_4rbgt"]
@@ -9,13 +9,23 @@
 [ext_resource type="PackedScene" uid="uid://bitap1diibfci" path="res://scenes/mortar.tscn" id="5_o7byh"]
 [ext_resource type="PackedScene" uid="uid://d2bkqxuhp6he5" path="res://scenes/spoon.tscn" id="6_5e0ct"]
 [ext_resource type="Texture2D" uid="uid://djv33dv1775eu" path="res://assets/art/hud/PanelDialogueBox.png" id="8_08f7r"]
+[ext_resource type="Texture2D" uid="uid://c8iu6dg5w3smf" path="res://assets/art/Cauldron_Smoke_Ing._Sheet.png" id="10_kr2im"]
 [ext_resource type="Texture2D" uid="uid://co3rbqt525twy" path="res://assets/art/potions/EmptyBottle.png" id="11_hfqn5"]
+[ext_resource type="AudioStream" uid="uid://dty0vtejhbaom" path="res://assets/audio/Jump 1.wav" id="11_iu5nn"]
 [ext_resource type="Texture2D" uid="uid://beb2c3lk5lvko" path="res://assets/art/GoldCoin.png" id="11_o4id7"]
 [ext_resource type="FontFile" uid="uid://q85kupmqqr71" path="res://assets/fonts/DungeonFont.ttf" id="11_oqnn2"]
 [ext_resource type="PackedScene" uid="uid://bjvncor4efng7" path="res://scenes/recipe_menu.tscn" id="12_ymvvb"]
 [ext_resource type="Texture2D" uid="uid://djj23pmfygq1x" path="res://assets/art/hud/Page_Corner_Recipe.png" id="14_s8wcm"]
+[ext_resource type="AudioStream" uid="uid://7fi4rujlj420" path="res://assets/audio/Fruit collect 1.wav" id="15_m8waf"]
 [ext_resource type="Texture2D" uid="uid://bcgtclg1powru" path="res://assets/art/hud/Page_Corner_Highlight.png" id="15_vjgu6"]
+[ext_resource type="FontFile" uid="uid://5vcqisqbfx6x" path="res://assets/fonts/Abaddon Light.ttf" id="15_vua3j"]
+[ext_resource type="AudioStream" uid="uid://bfuoa7da7vo3v" path="res://assets/audio/Menu_Out.wav" id="16_1wlb0"]
+[ext_resource type="AudioStream" uid="uid://313k752by6oa" path="res://assets/audio/Cancel.wav" id="16_j7jt5"]
 [ext_resource type="Texture2D" uid="uid://cd6d7tw4lmonc" path="res://assets/art/characters/potiongerl_Blink_Corner.png" id="16_o7nox"]
+[ext_resource type="AudioStream" uid="uid://d3pq3k7axgf8k" path="res://assets/sound/music/16Bit Fantasy RPG  Town Music 2.mp3" id="17_7dmk3"]
+[ext_resource type="FontFile" uid="uid://plrn3c07hcx4" path="res://assets/fonts/Abaddon Bold.ttf" id="19_ndfhr"]
+[ext_resource type="AudioStream" uid="uid://lq06xpp36kuu" path="res://assets/audio/Click.wav" id="20_c5ptb"]
+[ext_resource type="AudioStream" uid="uid://c7xfijw4dagau" path="res://assets/audio/Water_Splash.wav" id="22_h6kiy"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_baq12"]
 
@@ -32,6 +42,42 @@ size = Vector2(412, 720)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qwiuo"]
 size = Vector2(817, 624.625)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0b7d"]
+atlas = ExtResource("10_kr2im")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y44ys"]
+atlas = ExtResource("10_kr2im")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tv26i"]
+atlas = ExtResource("10_kr2im")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byf8g"]
+atlas = ExtResource("10_kr2im")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fk8i7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0b7d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y44ys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tv26i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_byf8g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lama4"]
 size = Vector2(137.5, 138.5)
 
@@ -41,7 +87,7 @@ size = Vector2(137.5, 138.5)
 
 [sub_resource type="LabelSettings" id="LabelSettings_nhdxe"]
 font = ExtResource("11_oqnn2")
-font_size = 64
+font_size = 42
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gw5rq"]
 atlas = ExtResource("16_o7nox")
@@ -148,13 +194,39 @@ process_callback = 0
 
 [node name="spoon" parent="." groups=["spoon"] instance=ExtResource("6_5e0ct")]
 z_index = 1
-position = Vector2(-471, 111)
+position = Vector2(-326, 168)
 collision_layer = 4
 collision_mask = 4
 
 [node name="pestle" parent="." groups=["pestle"] instance=ExtResource("4_heto1")]
 z_index = 1
-position = Vector2(109, 215)
+position = Vector2(-9, 211)
+
+[node name="SmokeNodes" type="Node2D" parent="."]
+
+[node name="Smoke1" type="AnimatedSprite2D" parent="SmokeNodes"]
+z_index = 2
+position = Vector2(-530, 38)
+scale = Vector2(3.75, 6.25)
+sprite_frames = SubResource("SpriteFrames_fk8i7")
+autoplay = "default"
+frame_progress = 0.571113
+
+[node name="Smoke2" type="AnimatedSprite2D" parent="SmokeNodes"]
+z_index = 2
+position = Vector2(-475, 38)
+scale = Vector2(3.75, 6.25)
+sprite_frames = SubResource("SpriteFrames_fk8i7")
+autoplay = "default"
+frame_progress = 0.175784
+
+[node name="Smoke3" type="AnimatedSprite2D" parent="SmokeNodes"]
+z_index = 2
+position = Vector2(-414, 40)
+scale = Vector2(3.75, 6.25)
+sprite_frames = SubResource("SpriteFrames_fk8i7")
+autoplay = "default"
+frame_progress = 0.216653
 
 [node name="Cauldron" parent="." instance=ExtResource("5_babjq")]
 z_index = 2
@@ -182,6 +254,9 @@ polygon = PackedVector2Array(-42.4, -126.4, -36, -126.4, -36, -132, -12, -132, -
 [node name="IngredientCauldronSprite" type="Sprite2D" parent="Cauldron"]
 position = Vector2(0, -161.6)
 scale = Vector2(3, 3)
+
+[node name="CauldronDone" type="AudioStreamPlayer" parent="Cauldron"]
+stream = ExtResource("11_iu5nn")
 
 [node name="Mortar" parent="." instance=ExtResource("5_o7byh")]
 z_index = 2
@@ -257,12 +332,11 @@ offset_left = 83.0
 offset_top = 12.0
 offset_right = 406.0
 offset_bottom = 145.0
-theme_override_fonts/font = ExtResource("11_oqnn2")
-theme_override_font_sizes/font_size = 32
-autowrap_mode = 3
+theme_override_fonts/font = ExtResource("15_vua3j")
+theme_override_font_sizes/font_size = 24
+autowrap_mode = 2
 
 [node name="SellConfirmation" type="Control" parent="CustomerBox"]
-visible = false
 custom_minimum_size = Vector2(342, 149)
 anchors_preset = 0
 offset_left = 74.0
@@ -272,11 +346,11 @@ offset_bottom = 153.0
 
 [node name="SellLabel" type="Label" parent="CustomerBox/SellConfirmation"]
 layout_mode = 0
-offset_left = 76.0
-offset_top = 16.0
-offset_right = 264.0
-offset_bottom = 49.0
-theme_override_fonts/font = ExtResource("11_oqnn2")
+offset_left = 68.0
+offset_top = 23.0
+offset_right = 286.0
+offset_bottom = 59.0
+theme_override_fonts/font = ExtResource("19_ndfhr")
 theme_override_font_sizes/font_size = 32
 text = "Sell this potion?"
 
@@ -286,10 +360,14 @@ offset_left = 85.0
 offset_top = 75.0
 offset_right = 119.0
 offset_bottom = 106.0
-theme_override_fonts/font = ExtResource("11_oqnn2")
-theme_override_font_sizes/font_size = 16
+theme_override_fonts/font = ExtResource("15_vua3j")
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxEmpty_3kcy1")
 text = "yes"
+
+[node name="YesSound" type="AudioStreamPlayer" parent="CustomerBox/SellConfirmation/SellYes"]
+stream = ExtResource("15_m8waf")
+volume_db = -6.0
 
 [node name="SellNo" type="Button" parent="CustomerBox/SellConfirmation"]
 layout_mode = 0
@@ -297,32 +375,37 @@ offset_left = 217.0
 offset_top = 75.0
 offset_right = 245.0
 offset_bottom = 106.0
-theme_override_fonts/font = ExtResource("11_oqnn2")
-theme_override_font_sizes/font_size = 16
+theme_override_fonts/font = ExtResource("15_vua3j")
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxEmpty_5s3u7")
 text = "no"
+
+[node name="NoSound" type="AudioStreamPlayer" parent="CustomerBox/SellConfirmation/SellNo"]
+stream = ExtResource("16_1wlb0")
+
+[node name="BadSound" type="AudioStreamPlayer" parent="CustomerBox/SellConfirmation/SellNo"]
+stream = ExtResource("16_j7jt5")
 
 [node name="GoldPieces" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 355.0
-offset_top = 223.0
-offset_right = 488.0
-offset_bottom = 270.0
+offset_left = 272.0
+offset_top = 232.0
+offset_right = 402.0
+offset_bottom = 285.0
 
 [node name="GoldLabel" type="Label" parent="GoldPieces"]
 layout_mode = 0
-offset_left = 47.0
-offset_top = -5.0
-offset_right = 134.0
-offset_bottom = 60.0
+offset_left = 32.0
+offset_top = 4.0
+offset_right = 119.0
+offset_bottom = 69.0
 label_settings = SubResource("LabelSettings_nhdxe")
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="GPSprite" type="Sprite2D" parent="GoldPieces"]
-position = Vector2(18, 25)
-scale = Vector2(2, 2)
+position = Vector2(10, 35)
+scale = Vector2(1.25, 1.25)
 texture = ExtResource("11_o4id7")
 
 [node name="RecipeMenu" parent="." instance=ExtResource("12_ymvvb")]
@@ -349,6 +432,26 @@ sprite_frames = SubResource("SpriteFrames_b13m2")
 autoplay = "default"
 frame_progress = 0.628811
 
+[node name="MainMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_7dmk3")
+volume_db = -12.0
+autoplay = true
+
+[node name="ResetPotion" type="Button" parent="."]
+offset_left = -596.0
+offset_top = 278.0
+offset_right = -458.0
+offset_bottom = 314.0
+theme_override_fonts/font = ExtResource("19_ndfhr")
+text = "Reset potion?"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ResetPotion"]
+stream = ExtResource("20_c5ptb")
+
+[node name="Bloop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_h6kiy")
+volume_db = -8.0
+
 [connection signal="pressed" from="RecipeMenuButton" to="." method="_on_recipe_menu_button_pressed"]
 [connection signal="body_entered" from="hud/PanelArea" to="." method="_on_panel_area_body_entered"]
 [connection signal="body_entered" from="Cauldron/CauldronArea" to="." method="_on_cauldron_area_body_entered"]
@@ -365,3 +468,4 @@ frame_progress = 0.628811
 [connection signal="body_entered" from="CustomerBox/CustomerPotionArea" to="." method="_on_customer_potion_area_body_entered"]
 [connection signal="pressed" from="CustomerBox/SellConfirmation/SellYes" to="." method="_on_sell_yes_pressed"]
 [connection signal="pressed" from="CustomerBox/SellConfirmation/SellNo" to="." method="_on_sell_no_pressed"]
+[connection signal="pressed" from="ResetPotion" to="." method="_on_reset_potion_pressed"]

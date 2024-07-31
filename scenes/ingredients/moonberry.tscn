@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://1b8vh3u83rgn" path="res://assets/art/ingredients/Moonberry.png" id="2_4cj2v"]
 
 [node name="moonberry" type="RigidBody2D" groups=["ingredient", "pickable"]]
+z_index = 2
 input_pickable = true
 script = ExtResource("1_rv1cy")
 

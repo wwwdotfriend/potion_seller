@@ -51,6 +51,11 @@ var customer_order_position = Vector2(-175, 25)  # Main position under the box
 var customer_spacing = Vector2(400, 0)  # 32px spacing between customers
 var customer_offscreen_right = Vector2(300, 25)  # Position off-screen to the right
 
+@onready var smoke1 = $SmokeNodes/Smoke1
+@onready var smoke2 = $SmokeNodes/Smoke2
+@onready var smoke3 = $SmokeNodes/Smoke3
+
+
 ##### POTION RECIPES START #####
 var potion_recipes := {
 	"Potion of Health": {
@@ -64,7 +69,11 @@ var potion_recipes := {
 			"I need a potion to heal my broken arm!",
 			"My tummy hurts, please help!",
 			"I've got a nasty cut, got anything for that?",
-			"I'm feeling a bit under the weather, what can you give me?"
+			"I'm feeling a bit under the weather, what can you give me?",
+			"Oy, I've got a nasty gash from a goblin's blade. Got any of that red stuff?",
+			"Got trampled by a wild boar. Any chance you've got a remedy for, well... everything?",
+			"My apprentice's spell backfired. Now I'm covered in painful boils!",
+			"I need something for the aftermath of my mother-in-law's cooking tonight."
 		]
 	},
 	"Potion of Mana": {
@@ -77,7 +86,13 @@ var potion_recipes := {
 		"phrases": [
 			"My magic is depleted, I need a recharge!",
 			"Got anything to boost my spells?",
-			"I'm all outta juice, help!"
+			"I'm all outta juice, help!",
+			"My arcane reserves are tapped out. Got any magical pick-me-ups?",
+			"The ley lines are weak today. What've you got to compensate?",
+			"My wand's running on empty. How about a little refill?",
+			"The village needs a strong protective ward. I need a mana boost! Now!",
+			"My familiar's drained my power again. Help a mage out?",
+			"I got another ritual tonight. What's your strongest mana potion?"
 		]
 	},
 	"Potion of Strength": {
@@ -90,7 +105,13 @@ var potion_recipes := {
 		"phrases": [
 			"Nasty cave-in up the path, could use some extra help...",
 			"I'm feeling weak, can you help me bulk up?",
-			"I've got a pit fight coming up, what've you got?"
+			"I've got a pit fight coming up, what've you got?",
+			"There's a boulder blocking the mine entrance.",
+			"I've got an arm-wrestling match with an orc. Help me save face?",
+			"My scrawny arms can't draw this new longbow. Got any liquid courage?",
+			"The harvest festival's log-tossing contest is today.",
+			"I need to impress my crush at the town faire.",
+			"My kids want piggyback rides all day. My back can't take it!"
 		]
 	},
 	"Potion of Night Vision": {
@@ -104,7 +125,10 @@ var potion_recipes := {
 			"I'm going spelunking, need something to see in the dark.",
 			"I'm afraid of the dark.",
 			"I'm on watch tonight, what can you give me?",
-			"Got anything to help me navigate at night?"
+			"Got anything to help me navigate at night?",
+			"Got a potion to help me read ancient tomes by candlelight?",
+			"I need to track a nocturnal beast. What can enhance my night sight?",
+			"The underground maze changes at night. I need an edge to navigate it."
 		]
 	},
 	"Potion of Stealth": {
@@ -116,7 +140,12 @@ var potion_recipes := {
 		"sprite_path": "res://assets/art/potions/PotionofStealth.png",
 		"phrases": [
 			"I need to sneak past some critters, got anything for that?",
-			"The hide-and-seek championships are coming up, what can help me win?"
+			"The hide-and-seek championships are coming up, what can help me win?",
+			"I'm infiltrating a goblin camp. Got anything to make me blend in?",
+			"I'm surprising my wife for our anniversary. Help me sneak past her fairy wards?",
+			"The forest spirits don't take kindly to intruders. Got a way to mask my presence?",
+			"I need to observe a rare nocturnal creature without disturbing it.",
+			"Got to sneak into the dragon's lair. Not to steal, mind you! Just... research."
 		]
 	},
 	"Potion of Poison": {
@@ -129,7 +158,13 @@ var potion_recipes := {
 		"phrases": [
 			"I need something to... uh... get rid of pests. Yeah, pests.",
 			"Got anything that could make someone... sick?",
-			"I'm studying toxic substances, what's your strongest brew?"
+			"I'm studying toxic substances, what's your strongest brew?",
+			"My garden's overrun with magical pests.",
+			"I'm conducting research on rapid-onset illnesses. For academic purposes, of course.",
+			"The king's food taster needs some... job security. If you catch my drift.",
+			"Got anything that could incapacitate a rampaging troll?",
+			"I need to sabotage my rival's crops. I mean... protect them from invisible parasites.",
+			"My mother-in-law's coming to dinner."
 		]
 	},
 	"Potion of Shadows": {
@@ -142,7 +177,11 @@ var potion_recipes := {
 		"phrases": [
 			"I need to... disappear for a while. Got anything for that?",
 			"I need something a bit stronger than a normal invisibility potion...",
-			"I've got a job tonight. Need something to blend in, if you catch my drift."
+			"I've got a job tonight. Need something to blend in, if you catch my drift.",
+			"I seek to walk between worlds. What can you offer a planar traveler?",
+			"I need to become one with the night. What's your darkest brew?",
+			"The light... it burns. Help me embrace the darkness.",
+			"The ritual requires a vessel of pure darkness."
 		]
 	}
 }
@@ -154,11 +193,11 @@ func _ready() -> void:
 	for node in get_tree().get_nodes_in_group("inv_slot"):
 		node.slot_clicked.connect(slot_clicked)
 		
+	load_customer_scenes()
 	start_new_day()
 	sell_confirmation.hide()
 	recipe_menu.hide()
 	update_gold_display()
-	load_customer_scenes()
 
 func _process(delta: float) -> void:
 	grind_time()
@@ -310,6 +349,9 @@ func cauldron_clicked() -> void:
 			cauldron_ingredients.clear()
 			can_brew = false
 			$Cauldron/IngredientCauldronSprite.texture = null
+			smoke1.modulate = Color.WHITE
+			smoke2.modulate = Color.WHITE
+			smoke3.modulate = Color.WHITE
 
 func _on_cauldron_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -335,14 +377,19 @@ func _on_cauldron_inside_body_entered(body: Node2D) -> void:
 			if current_ingredient.state == IngredientItem.State.RAW:
 				print("its raw")
 			elif current_ingredient.state == IngredientItem.State.CRUSHED:
-				$Cauldron/IngredientCauldronSprite.texture = current_ingredient.crushed_sprite
 				current_ingredient.state = IngredientItem.State.CAULDRON
 				add_to_cauldron(current_ingredient.name)
+				$Bloop.play()
+				update_smoke_color(current_ingredient.color_code)
 				body.queue_free()
 				check_potion_recipe()
 
 func _on_cauldron_timer_timeout() -> void:
 	if can_brew and current_potion != "":
+		$Cauldron/CauldronDone.play()
+		smoke1.modulate = Color.DIM_GRAY
+		smoke2.modulate = Color.DIM_GRAY
+		smoke3.modulate = Color.DIM_GRAY
 		print("Brewed: ", current_potion)
 		can_brew = false
 
@@ -366,6 +413,16 @@ func check_potion_recipe() -> void:
 			current_potion = potion_name
 			print("can brew: ", potion_name)
 			return
+
+func update_smoke_color(color_code: String) -> void:
+	var color = Color(color_code)
+	if not smoke1.modulate.is_equal_approx(Color.WHITE):
+		if not smoke2.modulate.is_equal_approx(Color.WHITE):
+			smoke3.modulate = color
+		else:
+			smoke2.modulate = color
+	else:
+		smoke1.modulate = color
 
 ##### CUSTOMER #####
 func _on_customer_potion_area_body_entered(body: Node2D) -> void:
@@ -392,6 +449,7 @@ func generate_customer_orders(num_orders: int) -> void:
 	current_customers.clear()
 	
 	if not customer_scene_paths.is_empty() and not available_potions.is_empty():
+		num_orders = max(num_orders, 1)
 		for i in range(num_orders):
 			var random_potion = available_potions[randi() % available_potions.size()]
 			customer_orders.append(random_potion)
@@ -402,7 +460,9 @@ func generate_customer_orders(num_orders: int) -> void:
 
 			customer_instance.position = customer_offscreen_right + customer_spacing * i
 			current_customers.append(customer_instance)
-
+	
+	print("Generated ", customer_orders.size(), " orders")
+	print("Available customer scenes: ", customer_scene_paths)
 	animate_customer_queue()
 	display_current_order()
 
@@ -414,7 +474,7 @@ func animate_customer_queue() -> void:
 		tween.parallel().tween_property(customer, "position", target_position, 0.5)
 
 func load_customer_scenes() -> void:
-	var dir = DirAccess.open("res://scenes/customers/")
+	var dir = DirAccess.open(ProjectSettings.globalize_path("res://scenes/customers/"))
 	if dir:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
@@ -464,12 +524,15 @@ func next_order() -> void:
 	wrong_order = false
 
 func start_new_day() -> void:
-	customers_per_day = randi_range(3, 6)
+	print("Starting new day...")
+	customers_per_day = max(randi_range(5, 10), 1)
 	customers_served = 0
+	current_order_index = 0
 	if customer_scene_paths.is_empty():
 		load_customer_scenes()
 	generate_customer_orders(customers_per_day)
 	update_day_display()
+	display_current_order()
 
 func end_day() -> void:
 	current_day += 1
@@ -485,6 +548,7 @@ func update_gold_display():
 func _on_sell_yes_pressed() -> void:
 	var current_order = customer_orders[current_order_index]
 	if current_potion_in_area == current_order:
+		$CustomerBox/SellConfirmation/SellYes/YesSound.play()
 		var potion_value = potion_recipes[current_order]["base_value"]
 		player_gold += potion_value
 		update_gold_display()
@@ -493,6 +557,7 @@ func _on_sell_yes_pressed() -> void:
 		order_label.show()
 		wrong_order = false
 	else:
+		$CustomerBox/SellConfirmation/SellNo/BadSound.play()
 		sell_confirmation.hide()
 		order_label.show()
 		order_label.text = "This isn't what I wanted... (click to continue)"
@@ -502,6 +567,7 @@ func _on_sell_yes_pressed() -> void:
 	current_potion_in_area = ""
 
 func _on_sell_no_pressed() -> void:
+	$CustomerBox/SellConfirmation/SellNo/NoSound.play()
 	sell_confirmation.hide()
 	order_label.show()
 	potion_sprite.texture = load("res://assets/art/potions/EmptyBottle.png")
@@ -531,3 +597,13 @@ func check_for_scripted_events() -> void:
 	#match current_day:
 		#3:
 			#trigger_day_three_event()
+
+
+func _on_reset_potion_pressed() -> void:
+	$ResetPotion/AudioStreamPlayer.play()
+	cauldron_ingredients.clear()
+	current_potion = ""
+	can_brew = false
+	smoke1.modulate = Color.WHITE
+	smoke2.modulate = Color.WHITE
+	smoke3.modulate = Color.WHITE

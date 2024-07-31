@@ -79,6 +79,7 @@ one_way_collision = true
 [node name="Store" type="Node2D" parent="."]
 
 [node name="plus_bloodroot" type="Button" parent="Store"]
+visible = false
 offset_left = 277.0
 offset_top = -75.0
 offset_right = 317.0

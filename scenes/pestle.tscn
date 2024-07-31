@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4uqiq2mtyhk2"]
+[gd_scene load_steps=4 format=3 uid="uid://c4uqiq2mtyhk2"]
 
 [ext_resource type="Script" path="res://scripts/tool.gd" id="1_c2u4r"]
 [ext_resource type="Texture2D" uid="uid://dk20dmykkwws8" path="res://assets/art/pestle.png" id="2_s4l3j"]
+[ext_resource type="AudioStream" uid="uid://bttoaowuidf32" path="res://assets/audio/Hit damage 1.wav" id="3_0uutb"]
 
 [node name="pestle" type="CharacterBody2D" groups=["pickable", "tool"]]
 collision_layer = 2
@@ -24,5 +25,9 @@ polygon = PackedVector2Array(-6, -30, -6, -29, -7, -29, -7, -28, -8, -28, -8, -2
 position = Vector2(0, -80)
 scale = Vector2(2.5, 2.5)
 polygon = PackedVector2Array(-9, 25, -9, 28, -8, 28, -8, 29, -7, 29, -7, 30, -6, 30, -6, 31, -3, 31, -3, 32, 3, 32, 3, 31, 6, 31, 6, 30, 7, 30, 7, 29, 8, 29, 8, 28, 9, 28, 9, 25)
+
+[node name="HitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_0uutb")
+volume_db = -6.0
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

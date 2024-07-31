@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cut8xjphfhi6f" path="res://assets/art/ingredients/mortar ingredients/SunsGrace_Powder.png" id="2_j02mr"]
 
 [node name="suns_grace" type="RigidBody2D" groups=["ingredient", "pickable"]]
+z_index = 2
 input_pickable = true
 script = ExtResource("1_f2tj5")
 

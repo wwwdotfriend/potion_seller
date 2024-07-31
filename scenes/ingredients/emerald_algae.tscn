@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bnbillvgxwbci" path="res://assets/art/ingredients/Emerald_Algae.png" id="2_8majt"]
 
 [node name="emerald algae" type="RigidBody2D" groups=["ingredient", "pickable"]]
+z_index = 2
 input_pickable = true
 script = ExtResource("1_0pord")
 

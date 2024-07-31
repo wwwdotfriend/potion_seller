@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bjvncor4efng7"]
 
-[ext_resource type="Texture2D" uid="uid://cppyttbejh8lu" path="res://assets/art/hud/Recipe_Page2.png" id="1_7c1uw"]
+[ext_resource type="Texture2D" uid="uid://76kkdatbkgh2" path="res://assets/art/hud/Recipe_Page1.png" id="1_6vkf4"]
 
 [node name="RecipeMenu" type="Control"]
 layout_mode = 3
@@ -14,4 +14,4 @@ grow_vertical = 2
 layout_mode = 0
 offset_right = 730.0
 offset_bottom = 553.0
-texture = ExtResource("1_7c1uw")
+texture = ExtResource("1_6vkf4")
