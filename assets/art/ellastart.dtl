@@ -22,5 +22,11 @@ leave pinky_main
 - Let me show you how you're SUPPOSED to do it.
 	join pinkgirlsad center
 	pinkgirlsad: Hey! I know what I'm doing.. I think..
+leave pinkgirlsad
+join potion_seller center
+potion_seller: Anyways, we need to get ready theres... 
+leave potion_seller
+join potionsellerchocked center
+potionsellerchocked: What the...
 [signal arg="its a signal"]
 [end_timeline]
